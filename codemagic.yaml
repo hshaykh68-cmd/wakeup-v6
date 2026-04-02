@@ -20,7 +20,12 @@ workflows:
           
       - name: Clean Build Cache
         script: |
-          ./gradlew clean
+          rm -rf ~/.gradle/caches/
+          rm -rf .gradle/
+          rm -rf app/build/
+          rm -rf build/
+          ./gradlew clean --no-configuration-cache
+          ./gradlew cleanBuildCache || true
           
       - name: Download dependencies
         script: |
