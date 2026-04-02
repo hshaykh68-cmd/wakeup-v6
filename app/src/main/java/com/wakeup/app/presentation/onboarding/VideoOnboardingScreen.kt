@@ -193,93 +193,129 @@ fun VideoOnboardingScreen(
 // Screen 1: Problem - "Tired of Sleeping Through Alarms?"
 @Composable
 private fun ProblemPage() {
-    Column(
+    Box(
         modifier = Modifier
             .fillMaxSize()
-            .padding(horizontal = 32.dp)
-            .statusBarsPadding()
-            .padding(top = 80.dp),
-        horizontalAlignment = Alignment.CenterHorizontally,
-        verticalArrangement = Arrangement.Center
+            .padding(horizontal = SpacingTokens.screenEdge)
     ) {
-        Spacer(modifier = Modifier.weight(0.15f))
+        // Lottie animation takes top 60% - no text overlay
+        // (Animation is handled by AnimatedBackground in parent)
+        
+        // Text content in bottom 40% with solid gradient background for contrast
+        Box(
+            modifier = Modifier
+                .fillMaxWidth()
+                .align(Alignment.BottomCenter)
+                .background(
+                    Brush.verticalGradient(
+                        colors = listOf(
+                            Color.Black.copy(alpha = 0.0f),
+                            Color.Black.copy(alpha = 0.6f),
+                            Color.Black.copy(alpha = 0.8f)
+                        ),
+                        startY = 0f,
+                        endY = Float.POSITIVE_INFINITY
+                    )
+                )
+                .padding(horizontal = SpacingTokens.lg, vertical = SpacingTokens.xl)
+        ) {
+            Column(
+                horizontalAlignment = Alignment.CenterHorizontally,
+                modifier = Modifier.fillMaxWidth()
+            ) {
+                Text(
+                    text = "Tired of Sleeping\nThrough Alarms?",
+                    style = MaterialTheme.typography.headlineLarge,
+                    fontWeight = FontWeight.Bold,
+                    textAlign = TextAlign.Center,
+                    color = Color.White,
+                    lineHeight = 40.sp
+                )
 
-        Text(
-            text = "Tired of Sleeping\nThrough Alarms?",
-            style = MaterialTheme.typography.headlineLarge,
-            fontWeight = FontWeight.Bold,
-            textAlign = TextAlign.Center,
-            color = Color.White
-        )
+                Spacer(modifier = Modifier.height(SpacingTokens.sm))
 
-        Spacer(modifier = Modifier.height(SpacingTokens.lg))
+                Text(
+                    text = "60% of people snooze through their alarm. Not anymore.",
+                    style = MaterialTheme.typography.bodyLarge,
+                    textAlign = TextAlign.Center,
+                    color = Color.White.copy(alpha = OpacityTokens.border)
+                )
 
-        Text(
-            text = "You're not alone. 60% of people snooze through their alarm at least once a week.",
-            style = MaterialTheme.typography.bodyLarge,
-            textAlign = TextAlign.Center,
-            color = Color.White.copy(alpha = OpacityTokens.border)
-        )
+                Spacer(modifier = Modifier.height(SpacingTokens.md))
 
-        Spacer(modifier = Modifier.weight(0.6f))
-
-        Text(
-            text = "Swipe to explore",
-            style = MaterialTheme.typography.labelLarge,
-            color = Color.White.copy(alpha = OpacityTokens.strong)
-        )
-
-        Spacer(modifier = Modifier.height(SpacingTokens.sm))
+                Text(
+                    text = "Swipe to explore →",
+                    style = MaterialTheme.typography.labelLarge,
+                    color = Color.White.copy(alpha = OpacityTokens.strong)
+                )
+            }
+        }
     }
 }
 
 // Screen 2: Solution - "Supercharge Your Morning"
 @Composable
 private fun SuperchargePage() {
-    Column(
+    Box(
         modifier = Modifier
             .fillMaxSize()
-            .padding(horizontal = 32.dp)
-            .statusBarsPadding()
-            .padding(top = 60.dp),
-        horizontalAlignment = Alignment.CenterHorizontally,
-        verticalArrangement = Arrangement.Center
+            .padding(horizontal = SpacingTokens.screenEdge)
     ) {
-        Spacer(modifier = Modifier.weight(0.1f))
-
-        Text(
-            text = "Supercharge Your\nMorning",
-            style = MaterialTheme.typography.headlineLarge,
-            fontWeight = FontWeight.Bold,
-            textAlign = TextAlign.Center,
-            color = Color.White
-        )
-
-        Spacer(modifier = Modifier.height(SpacingTokens.mdLg))
-
-        Text(
-            text = "WakeUp forces you to get up and move with missions that require your full attention.",
-            style = MaterialTheme.typography.bodyLarge,
-            textAlign = TextAlign.Center,
-            color = Color.White.copy(alpha = OpacityTokens.border)
-        )
-
-        Spacer(modifier = Modifier.height(SpacingTokens.xl))
-
-        // Mission type pills
-        FlowRow(
-            horizontalArrangement = Arrangement.spacedBy(12.dp, Alignment.CenterHorizontally),
-            verticalArrangement = Arrangement.spacedBy(12.dp),
-            modifier = Modifier.fillMaxWidth()
+        // Text content in bottom 40% with solid gradient background for contrast
+        Box(
+            modifier = Modifier
+                .fillMaxWidth()
+                .align(Alignment.BottomCenter)
+                .background(
+                    Brush.verticalGradient(
+                        colors = listOf(
+                            Color.Black.copy(alpha = 0.0f),
+                            Color.Black.copy(alpha = 0.6f),
+                            Color.Black.copy(alpha = 0.8f)
+                        ),
+                        startY = 0f,
+                        endY = Float.POSITIVE_INFINITY
+                    )
+                )
+                .padding(horizontal = SpacingTokens.lg, vertical = SpacingTokens.xl)
         ) {
-            MissionTypePill("Math", WakeUpColors.iosBlue)
-            MissionTypePill("Memory", WakeUpColors.iosPurple)
-            MissionTypePill("Shake", WakeUpColors.iosOrange)
-            MissionTypePill("Photo", WakeUpColors.iosPink)
-            MissionTypePill("Barcode", WakeUpColors.iosTeal)
-        }
+            Column(
+                horizontalAlignment = Alignment.CenterHorizontally,
+                modifier = Modifier.fillMaxWidth()
+            ) {
+                Text(
+                    text = "Supercharge Your\nMorning",
+                    style = MaterialTheme.typography.headlineLarge,
+                    fontWeight = FontWeight.Bold,
+                    textAlign = TextAlign.Center,
+                    color = Color.White,
+                    lineHeight = 40.sp
+                )
 
-        Spacer(modifier = Modifier.weight(0.5f))
+                Spacer(modifier = Modifier.height(SpacingTokens.sm))
+
+                Text(
+                    text = "Missions that force you to get up and move. No snoozing allowed.",
+                    style = MaterialTheme.typography.bodyLarge,
+                    textAlign = TextAlign.Center,
+                    color = Color.White.copy(alpha = OpacityTokens.border)
+                )
+
+                Spacer(modifier = Modifier.height(SpacingTokens.md))
+
+                // Mission type pills - simplified
+                FlowRow(
+                    horizontalArrangement = Arrangement.spacedBy(SpacingTokens.sm, Alignment.CenterHorizontally),
+                    verticalArrangement = Arrangement.spacedBy(SpacingTokens.sm),
+                    modifier = Modifier.fillMaxWidth()
+                ) {
+                    MissionTypePill("Math", WakeUpColors.iosBlue)
+                    MissionTypePill("Memory", WakeUpColors.iosPurple)
+                    MissionTypePill("Shake", WakeUpColors.iosOrange)
+                    MissionTypePill("Photo", WakeUpColors.iosPink)
+                }
+            }
+        }
     }
 }
 
@@ -306,77 +342,64 @@ private fun MissionTypePill(
 // Screen 3: Missions - "Missions That Actually Work"
 @Composable
 private fun MissionsShowcasePage() {
-    Column(
+    Box(
         modifier = Modifier
             .fillMaxSize()
-            .padding(horizontal = 32.dp)
-            .statusBarsPadding()
-            .padding(top = 60.dp),
-        horizontalAlignment = Alignment.CenterHorizontally,
-        verticalArrangement = Arrangement.Center
+            .padding(horizontal = SpacingTokens.screenEdge)
     ) {
-        Spacer(modifier = Modifier.weight(0.1f))
-
-        Text(
-            text = "Missions That\nActually Work",
-            style = MaterialTheme.typography.headlineLarge,
-            fontWeight = FontWeight.Bold,
-            textAlign = TextAlign.Center,
-            color = Color.White
-        )
-
-        Spacer(modifier = Modifier.height(SpacingTokens.md))
-
-        Text(
-            text = "Complete challenges to dismiss your alarm. No snoozing allowed!",
-            style = MaterialTheme.typography.bodyLarge,
-            textAlign = TextAlign.Center,
-            color = Color.White.copy(alpha = OpacityTokens.border)
-        )
-
-        Spacer(modifier = Modifier.height(SpacingTokens.xl))
-
-        // Difficulty chips
-        Row(
-            horizontalArrangement = Arrangement.spacedBy(12.dp, Alignment.CenterHorizontally),
-            modifier = Modifier.fillMaxWidth()
+        // Text content in bottom 40% with solid gradient background for contrast
+        Box(
+            modifier = Modifier
+                .fillMaxWidth()
+                .align(Alignment.BottomCenter)
+                .background(
+                    Brush.verticalGradient(
+                        colors = listOf(
+                            Color.Black.copy(alpha = 0.0f),
+                            Color.Black.copy(alpha = 0.6f),
+                            Color.Black.copy(alpha = 0.8f)
+                        ),
+                        startY = 0f,
+                        endY = Float.POSITIVE_INFINITY
+                    )
+                )
+                .padding(horizontal = SpacingTokens.lg, vertical = SpacingTokens.xl)
         ) {
-            DifficultyChip("Easy", WakeUpColors.iosGreen)
-            DifficultyChip("Medium", WakeUpColors.iosOrange)
-            DifficultyChip("Hard", WakeUpColors.iosRed)
+            Column(
+                horizontalAlignment = Alignment.CenterHorizontally,
+                modifier = Modifier.fillMaxWidth()
+            ) {
+                Text(
+                    text = "Missions That\nActually Work",
+                    style = MaterialTheme.typography.headlineLarge,
+                    fontWeight = FontWeight.Bold,
+                    textAlign = TextAlign.Center,
+                    color = Color.White,
+                    lineHeight = 40.sp
+                )
+
+                Spacer(modifier = Modifier.height(SpacingTokens.sm))
+
+                Text(
+                    text = "Complete challenges to dismiss. Easy, Medium, or Hard.",
+                    style = MaterialTheme.typography.bodyLarge,
+                    textAlign = TextAlign.Center,
+                    color = Color.White.copy(alpha = OpacityTokens.border)
+                )
+
+                Spacer(modifier = Modifier.height(SpacingTokens.md))
+
+                // Difficulty chips only - removed mission cards
+                Row(
+                    horizontalArrangement = Arrangement.spacedBy(SpacingTokens.sm, Alignment.CenterHorizontally),
+                    modifier = Modifier.fillMaxWidth()
+                ) {
+                    DifficultyChip("Easy", WakeUpColors.iosGreen)
+                    DifficultyChip("Medium", WakeUpColors.iosOrange)
+                    DifficultyChip("Hard", WakeUpColors.iosRed)
+                }
+            }
         }
-
-        Spacer(modifier = Modifier.height(32.dp))
-
-        // Mission cards row
-        Row(
-            horizontalArrangement = Arrangement.spacedBy(16.dp),
-            modifier = Modifier.fillMaxWidth()
-        ) {
-            MissionPreviewCard(
-                icon = Icons.Default.Calculate,
-                title = "Math",
-                description = "Solve 5 equations",
-                color = WakeUpColors.iosBlue,
-                modifier = Modifier.weight(1f)
-            )
-            MissionPreviewCard(
-                icon = Icons.Default.Memory,
-                title = "Memory",
-                description = "Match patterns",
-                color = WakeUpColors.iosPurple,
-                modifier = Modifier.weight(1f)
-            )
-            MissionPreviewCard(
-                icon = Icons.Default.PhotoCamera,
-                title = "Photo",
-                description = "Snap a picture",
-                color = WakeUpColors.iosPink,
-                modifier = Modifier.weight(1f)
-            )
-        }
-
-        Spacer(modifier = Modifier.weight(0.4f))
     }
 }
 
@@ -397,290 +420,188 @@ private fun DifficultyChip(label: String, color: Color) {
     }
 }
 
-@Composable
-private fun MissionPreviewCard(
-    icon: androidx.compose.ui.graphics.vector.ImageVector,
-    title: String,
-    description: String,
-    color: Color,
-    modifier: Modifier = Modifier
-) {
-    Column(
-        modifier = modifier
-            .clip(RoundedCornerShape(ShapeTokens.md))
-            .background(Color.White.copy(alpha = OpacityTokens.light))
-            .padding(SpacingTokens.md),
-        horizontalAlignment = Alignment.CenterHorizontally
-    ) {
-        Box(
-            modifier = Modifier
-                .size(IconSizeTokens.xxl)
-                .background(color.copy(alpha = OpacityTokens.strong), CircleShape),
-            contentAlignment = Alignment.Center
-        ) {
-            Icon(
-                imageVector = icon,
-                contentDescription = null,
-                tint = color,
-                modifier = Modifier.size(IconSizeTokens.md)
-            )
-        }
-
-        Spacer(modifier = Modifier.height(8.dp))
-
-        Text(
-            text = title,
-            style = MaterialTheme.typography.labelLarge,
-            fontWeight = FontWeight.SemiBold,
-            color = Color.White
-        )
-
-        Spacer(modifier = Modifier.height(SpacingTokens.sm))
-
-        Text(
-            text = description,
-            style = MaterialTheme.typography.labelMedium,
-            color = Color.White.copy(alpha = OpacityTokens.borderMedium),
-            textAlign = TextAlign.Center
-        )
-    }
-}
-
 // Screen 4: Stats - "Watch Your Progress Grow"
 @Composable
 private fun StatsPreviewPage() {
-    Column(
+    Box(
         modifier = Modifier
             .fillMaxSize()
-            .padding(horizontal = 32.dp)
-            .statusBarsPadding()
-            .padding(top = 60.dp),
-        horizontalAlignment = Alignment.CenterHorizontally,
-        verticalArrangement = Arrangement.Center
+            .padding(horizontal = SpacingTokens.screenEdge)
     ) {
-        Spacer(modifier = Modifier.weight(0.1f))
-
-        Text(
-            text = "Watch Your\nProgress Grow",
-            style = MaterialTheme.typography.headlineLarge,
-            fontWeight = FontWeight.Bold,
-            textAlign = TextAlign.Center,
-            color = Color.White
-        )
-
-        Spacer(modifier = Modifier.height(16.dp))
-
-        Text(
-            text = "Build streaks, track success rates, and celebrate your wins.",
-            style = MaterialTheme.typography.bodyLarge,
-            textAlign = TextAlign.Center,
-            color = Color.White.copy(alpha = 0.85f)
-        )
-
-        Spacer(modifier = Modifier.height(40.dp))
-
-        // Stat cards
-        Column(
-            verticalArrangement = Arrangement.spacedBy(16.dp),
-            modifier = Modifier.fillMaxWidth()
-        ) {
-            StatPreviewCard(
-                icon = Icons.Default.LocalFireDepartment,
-                title = "Current Streak",
-                value = "7 days",
-                subtitle = "Keep it going!",
-                color = WakeUpColors.iosOrange
-            )
-
-            Row(
-                horizontalArrangement = Arrangement.spacedBy(16.dp),
-                modifier = Modifier.fillMaxWidth()
-            ) {
-                SmallStatCard(
-                    title = "Success Rate",
-                    value = "85%",
-                    color = WakeUpColors.iosGreen,
-                    modifier = Modifier.weight(1f)
-                )
-                SmallStatCard(
-                    title = "Best Streak",
-                    value = "12 days",
-                    color = WakeUpColors.iosBlue,
-                    modifier = Modifier.weight(1f)
-                )
-            }
-        }
-
-        Spacer(modifier = Modifier.weight(0.3f))
-    }
-}
-
-@Composable
-private fun StatPreviewCard(
-    icon: androidx.compose.ui.graphics.vector.ImageVector,
-    title: String,
-    value: String,
-    subtitle: String,
-    color: Color,
-    modifier: Modifier = Modifier
-) {
-    Row(
-        modifier = modifier
-            .fillMaxWidth()
-            .clip(RoundedCornerShape(16.dp))
-            .background(Color.White.copy(alpha = 0.12f))
-            .padding(20.dp),
-        verticalAlignment = Alignment.CenterVertically
-    ) {
+        // Text content in bottom 40% with solid gradient background for contrast
         Box(
             modifier = Modifier
-                .size(52.dp)
-                .background(color.copy(alpha = 0.25f), CircleShape),
-            contentAlignment = Alignment.Center
+                .fillMaxWidth()
+                .align(Alignment.BottomCenter)
+                .background(
+                    Brush.verticalGradient(
+                        colors = listOf(
+                            Color.Black.copy(alpha = 0.0f),
+                            Color.Black.copy(alpha = 0.6f),
+                            Color.Black.copy(alpha = 0.8f)
+                        ),
+                        startY = 0f,
+                        endY = Float.POSITIVE_INFINITY
+                    )
+                )
+                .padding(horizontal = SpacingTokens.lg, vertical = SpacingTokens.xl)
         ) {
-            Icon(
-                imageVector = icon,
-                contentDescription = null,
-                tint = color,
-                modifier = Modifier.size(28.dp)
-            )
+            Column(
+                horizontalAlignment = Alignment.CenterHorizontally,
+                modifier = Modifier.fillMaxWidth()
+            ) {
+                Text(
+                    text = "Watch Your\nProgress Grow",
+                    style = MaterialTheme.typography.headlineLarge,
+                    fontWeight = FontWeight.Bold,
+                    textAlign = TextAlign.Center,
+                    color = Color.White,
+                    lineHeight = 40.sp
+                )
+
+                Spacer(modifier = Modifier.height(SpacingTokens.sm))
+
+                Text(
+                    text = "Build streaks, track success rates, and celebrate your wins.",
+                    style = MaterialTheme.typography.bodyLarge,
+                    textAlign = TextAlign.Center,
+                    color = Color.White.copy(alpha = OpacityTokens.border)
+                )
+
+                Spacer(modifier = Modifier.height(SpacingTokens.md))
+
+                // Simple stats summary - removed complex cards
+                Row(
+                    horizontalArrangement = Arrangement.spacedBy(SpacingTokens.lg, Alignment.CenterHorizontally),
+                    modifier = Modifier.fillMaxWidth()
+                ) {
+                    Column(horizontalAlignment = Alignment.CenterHorizontally) {
+                        Text(
+                            text = "7",
+                            style = MaterialTheme.typography.headlineMedium,
+                            fontWeight = FontWeight.Bold,
+                            color = WakeUpColors.iosOrange
+                        )
+                        Text(
+                            text = "Day Streak",
+                            style = MaterialTheme.typography.labelMedium,
+                            color = Color.White.copy(alpha = OpacityTokens.strong)
+                        )
+                    }
+                    Column(horizontalAlignment = Alignment.CenterHorizontally) {
+                        Text(
+                            text = "85%",
+                            style = MaterialTheme.typography.headlineMedium,
+                            fontWeight = FontWeight.Bold,
+                            color = WakeUpColors.iosGreen
+                        )
+                        Text(
+                            text = "Success Rate",
+                            style = MaterialTheme.typography.labelMedium,
+                            color = Color.White.copy(alpha = OpacityTokens.strong)
+                        )
+                    }
+                }
+            }
         }
-
-        Spacer(modifier = Modifier.width(16.dp))
-
-        Column {
-            Text(
-                text = title,
-                style = MaterialTheme.typography.labelLarge,
-                color = Color.White.copy(alpha = 0.7f)
-            )
-
-            Text(
-                text = value,
-                style = MaterialTheme.typography.headlineMedium,
-                fontWeight = FontWeight.Bold,
-                color = Color.White
-            )
-
-            Text(
-                text = subtitle,
-                style = MaterialTheme.typography.labelMedium,
-                color = color
-            )
-        }
-    }
-}
-
-@Composable
-private fun SmallStatCard(
-    title: String,
-    value: String,
-    color: Color,
-    modifier: Modifier = Modifier
-) {
-    Column(
-        modifier = modifier
-            .clip(RoundedCornerShape(16.dp))
-            .background(Color.White.copy(alpha = 0.12f))
-            .padding(20.dp),
-        horizontalAlignment = Alignment.CenterHorizontally
-    ) {
-        Text(
-            text = title,
-            style = MaterialTheme.typography.labelLarge,
-            color = Color.White.copy(alpha = 0.7f)
-        )
-
-        Spacer(modifier = Modifier.height(4.dp))
-
-        Text(
-            text = value,
-            style = MaterialTheme.typography.headlineMedium,
-            fontWeight = FontWeight.Bold,
-            color = color
-        )
     }
 }
 
 // Screen 5: Final CTA - "Ready to Wake Up?"
 @Composable
 private fun FinalCTAPage(onGetStarted: () -> Unit) {
-    Column(
+    Box(
         modifier = Modifier
             .fillMaxSize()
-            .padding(horizontal = 32.dp)
-            .statusBarsPadding()
-            .padding(top = 60.dp),
-        horizontalAlignment = Alignment.CenterHorizontally,
-        verticalArrangement = Arrangement.Center
+            .padding(horizontal = SpacingTokens.screenEdge)
     ) {
-        Spacer(modifier = Modifier.weight(0.15f))
-
-        // Premium badge
+        // Text content in bottom 40% with solid gradient background for contrast
         Box(
             modifier = Modifier
-                .clip(RoundedCornerShape(12.dp))
+                .fillMaxWidth()
+                .align(Alignment.BottomCenter)
                 .background(
-                    Brush.linearGradient(
+                    Brush.verticalGradient(
                         colors = listOf(
-                            WakeUpColors.iosGold,
-                            WakeUpColors.iosYellow
-                        )
+                            Color.Black.copy(alpha = 0.0f),
+                            Color.Black.copy(alpha = 0.6f),
+                            Color.Black.copy(alpha = 0.9f)
+                        ),
+                        startY = 0f,
+                        endY = Float.POSITIVE_INFINITY
                     )
                 )
-                .padding(horizontal = 16.dp, vertical = 8.dp)
+                .padding(horizontal = SpacingTokens.lg, vertical = SpacingTokens.xl)
         ) {
-            Row(verticalAlignment = Alignment.CenterVertically) {
-                Icon(
-                    imageVector = Icons.Default.EmojiEvents,
-                    contentDescription = null,
-                    tint = Color.Black,
-                    modifier = Modifier.size(20.dp)
-                )
-                Spacer(modifier = Modifier.width(4.dp))
+            Column(
+                horizontalAlignment = Alignment.CenterHorizontally,
+                modifier = Modifier.fillMaxWidth()
+            ) {
+                // Premium badge
+                Box(
+                    modifier = Modifier
+                        .clip(RoundedCornerShape(ShapeTokens.smMd))
+                        .background(
+                            Brush.linearGradient(
+                                colors = listOf(
+                                    WakeUpColors.iosGold,
+                                    WakeUpColors.iosYellow
+                                )
+                            )
+                        )
+                        .padding(horizontal = SpacingTokens.md, vertical = SpacingTokens.sm)
+                ) {
+                    Row(verticalAlignment = Alignment.CenterVertically) {
+                        Icon(
+                            imageVector = Icons.Default.EmojiEvents,
+                            contentDescription = null,
+                            tint = Color.Black,
+                            modifier = Modifier.size(IconSizeTokens.sm)
+                        )
+                        Spacer(modifier = Modifier.width(SpacingTokens.xs))
+                        Text(
+                            text = "PREMIUM",
+                            style = MaterialTheme.typography.labelLarge,
+                            fontWeight = FontWeight.Bold,
+                            color = Color.Black
+                        )
+                    }
+                }
+
+                Spacer(modifier = Modifier.height(SpacingTokens.md))
+
                 Text(
-                    text = "PREMIUM",
-                    style = MaterialTheme.typography.labelLarge,
+                    text = "Ready to\nWake Up?",
+                    style = MaterialTheme.typography.headlineLarge,
                     fontWeight = FontWeight.Bold,
-                    color = Color.Black
+                    textAlign = TextAlign.Center,
+                    color = Color.White,
+                    lineHeight = 40.sp
                 )
+
+                Spacer(modifier = Modifier.height(SpacingTokens.sm))
+
+                Text(
+                    text = "Join thousands who've transformed their mornings.",
+                    style = MaterialTheme.typography.bodyLarge,
+                    textAlign = TextAlign.Center,
+                    color = Color.White.copy(alpha = OpacityTokens.border)
+                )
+
+                Spacer(modifier = Modifier.height(SpacingTokens.md))
+
+                // Simplified feature list
+                Column(
+                    verticalArrangement = Arrangement.spacedBy(SpacingTokens.xs),
+                    horizontalAlignment = Alignment.Start,
+                    modifier = Modifier.fillMaxWidth(0.8f)
+                ) {
+                    PremiumFeatureItem("All Mission Types")
+                    PremiumFeatureItem("Advanced Analytics")
+                    PremiumFeatureItem("No Ads")
+                }
             }
         }
-
-        Spacer(modifier = Modifier.height(24.dp))
-
-        Text(
-            text = "Ready to\nWake Up?",
-            style = MaterialTheme.typography.headlineLarge,
-            fontWeight = FontWeight.Bold,
-            textAlign = TextAlign.Center,
-            color = Color.White
-        )
-
-        Spacer(modifier = Modifier.height(16.dp))
-
-        Text(
-            text = "Join thousands who've transformed their mornings with WakeUp.",
-            style = MaterialTheme.typography.bodyLarge,
-            textAlign = TextAlign.Center,
-            color = Color.White.copy(alpha = 0.85f)
-        )
-
-        Spacer(modifier = Modifier.height(40.dp))
-
-        // Premium features
-        Column(
-            verticalArrangement = Arrangement.spacedBy(12.dp),
-            modifier = Modifier.fillMaxWidth()
-        ) {
-            PremiumFeatureItem("All 6 Mission Types")
-            PremiumFeatureItem("All Difficulty Levels")
-            PremiumFeatureItem("Advanced Analytics")
-            PremiumFeatureItem("Unlimited Alarms")
-            PremiumFeatureItem("No Advertisements")
-        }
-
-        Spacer(modifier = Modifier.weight(0.4f))
     }
 }
 

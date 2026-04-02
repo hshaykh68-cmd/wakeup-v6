@@ -88,7 +88,9 @@ fun MainScreen(
 
     Scaffold(
         bottomBar = {
-            Column {
+            Column(
+                modifier = Modifier.navigationBarsPadding()
+            ) {
                 // Banner Ad
                 BannerAdView(adMobManager = adMobManager)
                 

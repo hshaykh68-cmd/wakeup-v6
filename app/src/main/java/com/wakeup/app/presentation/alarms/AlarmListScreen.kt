@@ -155,28 +155,7 @@ fun AlarmListScreen(
                         onToggle = { viewModel.toggleAlarm(alarm) },
                         onEdit = { onEditAlarm(alarm.id) },
                         onDelete = { 
-                            deletedAlarm = alarm
-                            scope.launch {
-                                val result = snackbarHostState.showSnackbar(
-                                    message = "Alarm deleted",
-                                    actionLabel = "UNDO",
-                                    duration = SnackbarDuration.Short
-                                )
-                                when (result) {
-                                    SnackbarResult.ActionPerformed -> {
-                                        // Undo - alarm stays, just dismiss snackbar
-                                        deletedAlarm = null
-                                    }
-                                    SnackbarResult.Dismissed -> {
-                                        // Actually delete after 4 second grace period
-                                        delay(4000)
-                                        if (deletedAlarm == alarm) {
-                                            viewModel.deleteAlarm(alarm.id)
-                                            deletedAlarm = null
-                                        }
-                                    }
-                                }
-                            }
+                            viewModel.deleteAlarm(alarm.id)
                         },
                         onDuplicate = { viewModel.duplicateAlarm(alarm.id) }
                     )
@@ -397,7 +376,7 @@ private fun SwipeableAlarmCard(
                     modifier = Modifier
                         .fillMaxSize()
                         .clip(RoundedCornerShape(16.dp))
-                        .background(color.copy(alpha = 0.2f)),
+                        .background(Color.Transparent),
                     contentAlignment = alignment
                 ) {
                     Icon(
