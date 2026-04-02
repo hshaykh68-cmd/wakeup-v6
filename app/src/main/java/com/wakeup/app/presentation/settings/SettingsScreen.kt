@@ -66,6 +66,14 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.wakeup.app.core.theme.WakeUpColors
+import com.wakeup.app.core.designsystem.tokens.OpacityTokens
+import com.wakeup.app.core.designsystem.tokens.SpacingTokens
+import com.wakeup.app.core.designsystem.tokens.ShapeTokens
+import com.wakeup.app.core.designsystem.tokens.IconSizeTokens
+import com.wakeup.app.core.designsystem.components.buttons.WakeUpButton
+import com.wakeup.app.core.designsystem.components.buttons.ButtonVariant
+import com.wakeup.app.core.designsystem.components.buttons.ButtonSize
+import com.wakeup.app.core.designsystem.components.buttons.WakeUpTextButton
 import com.wakeup.app.domain.model.PremiumType
 import com.wakeup.app.domain.repository.ThemeMode
 import com.wakeup.app.presentation.oem.OEMSetupViewModel
@@ -278,9 +286,9 @@ private fun GlassPremiumCard(onClick: () -> Unit) {
             ) {
                 Box(
                     modifier = Modifier
-                        .size(48.dp)
+                        .size(IconSizeTokens.containerLg)
                         .background(
-                            color = WakeUpColors.iosPurple.copy(alpha = 0.2f),
+                            color = WakeUpColors.iosPurple.copy(alpha = OpacityTokens.light),
                             shape = RoundedCornerShape(12.dp)
                         ),
                     contentAlignment = Alignment.Center
@@ -289,7 +297,7 @@ private fun GlassPremiumCard(onClick: () -> Unit) {
                         imageVector = Icons.Default.Star,
                         contentDescription = "Premium",
                         tint = WakeUpColors.iosPurple,
-                        modifier = Modifier.size(28.dp)
+                        modifier = Modifier.size(IconSizeTokens.mdLg)
                     )
                 }
                 Column {
@@ -356,9 +364,9 @@ private fun OEMCertificationSection(
                     Icon(
                         imageVector = Icons.Default.Security,
                         contentDescription = null,
-                        modifier = Modifier.size(20.dp)
+                        modifier = Modifier.size(IconSizeTokens.mdLg)
                     )
-                    Spacer(modifier = Modifier.width(8.dp))
+                    Spacer(modifier = Modifier.width(SpacingTokens.sm))
                     Text("Complete Device Setup")
                 }
             }
@@ -403,9 +411,9 @@ private fun GlassPremiumActiveCard(premiumType: PremiumType) {
             ) {
                 Box(
                     modifier = Modifier
-                        .size(48.dp)
+                        .size(IconSizeTokens.containerLg)
                         .background(
-                            color = headerColor.copy(alpha = 0.2f),
+                            color = headerColor.copy(alpha = OpacityTokens.light),
                             shape = RoundedCornerShape(12.dp)
                         ),
                     contentAlignment = Alignment.Center
@@ -414,7 +422,7 @@ private fun GlassPremiumActiveCard(premiumType: PremiumType) {
                         imageVector = Icons.Default.Check,
                         contentDescription = "Premium Active",
                         tint = headerColor,
-                        modifier = Modifier.size(28.dp)
+                        modifier = Modifier.size(IconSizeTokens.mdLg)
                     )
                 }
                 Column {
@@ -451,21 +459,21 @@ private fun GlassSettingsSection(
         Box(
             modifier = Modifier
                 .fillMaxWidth()
-                .clip(RoundedCornerShape(16.dp))
+                .clip(RoundedCornerShape(ShapeTokens.md))
                 .background(
                     brush = Brush.linearGradient(
                         colors = listOf(
-                            Color.White.copy(alpha = 0.12f),
-                            Color.White.copy(alpha = 0.06f)
+                            Color.White.copy(alpha = OpacityTokens.light),
+                            Color.White.copy(alpha = OpacityTokens.subtle)
                         )
                     )
                 )
                 .border(
                     width = 1.dp,
-                    color = Color.White.copy(alpha = 0.15f),
-                    shape = RoundedCornerShape(16.dp)
+                    color = Color.White.copy(alpha = OpacityTokens.borderSubtle),
+                    shape = RoundedCornerShape(ShapeTokens.md)
                 )
-                .padding(16.dp)
+                .padding(SpacingTokens.md)
         ) {
             Column {
                 content()
@@ -624,7 +632,7 @@ private fun SettingsSwitchItem(
     Row(
         modifier = Modifier
             .fillMaxWidth()
-            .padding(horizontal = 16.dp, vertical = 12.dp),
+            .padding(horizontal = SpacingTokens.md, vertical = SpacingTokens.sm),
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.SpaceBetween
     ) {
@@ -676,7 +684,7 @@ private fun SettingsClickableItem(
         Row(
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(horizontal = 16.dp, vertical = 16.dp),
+                .padding(horizontal = SpacingTokens.md, vertical = SpacingTokens.mdLg),
             verticalAlignment = Alignment.CenterVertically,
             horizontalArrangement = Arrangement.SpaceBetween
         ) {

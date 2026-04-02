@@ -53,6 +53,10 @@ import com.patrykandpatrick.vico.core.entry.ChartEntryModelProducer
 import com.patrykandpatrick.vico.core.entry.FloatEntry
 import com.patrykandpatrick.vico.core.entry.entryModelOf
 import com.wakeup.app.core.theme.WakeUpColors
+import com.wakeup.app.core.designsystem.tokens.OpacityTokens
+import com.wakeup.app.core.designsystem.tokens.SpacingTokens
+import com.wakeup.app.core.designsystem.tokens.ShapeTokens
+import com.wakeup.app.core.designsystem.tokens.IconSizeTokens
 import com.wakeup.app.domain.model.StatsTimeRange
 import com.wakeup.app.domain.model.WakeHistory
 import java.time.DayOfWeek
@@ -88,8 +92,8 @@ fun StatsScreen(
                 .fillMaxSize()
                 .padding(padding)
                 .verticalScroll(rememberScrollState())
-                .padding(horizontal = 20.dp),
-            verticalArrangement = Arrangement.spacedBy(16.dp)
+                .padding(horizontal = SpacingTokens.md),
+            verticalArrangement = Arrangement.spacedBy(SpacingTokens.md),
         ) {
             Spacer(modifier = Modifier.height(8.dp))
 

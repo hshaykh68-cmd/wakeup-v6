@@ -30,6 +30,12 @@ import androidx.compose.ui.unit.LayoutDirection
 import androidx.compose.ui.unit.dp
 import com.wakeup.app.R
 import com.wakeup.app.core.theme.WakeUpColors
+import com.wakeup.app.core.designsystem.tokens.OpacityTokens
+import com.wakeup.app.core.designsystem.tokens.SpacingTokens
+import com.wakeup.app.core.designsystem.tokens.ShapeTokens
+import com.wakeup.app.core.designsystem.tokens.IconSizeTokens
+import com.wakeup.app.core.designsystem.components.buttons.WakeUpButton
+import com.wakeup.app.core.designsystem.components.buttons.ButtonVariant
 import kotlinx.coroutines.launch
 import androidx.compose.foundation.ExperimentalFoundationApi
 
@@ -72,14 +78,14 @@ fun VideoOnboardingScreen(
             modifier = Modifier
                 .fillMaxWidth()
                 .statusBarsPadding()
-                .padding(16.dp),
+                .padding(SpacingTokens.md),
             contentAlignment = Alignment.TopEnd
         ) {
             IconButton(
                 onClick = onSkip,
                 modifier = Modifier
-                    .size(48.dp)
-                    .background(Color.White.copy(alpha = 0.2f), CircleShape)
+                    .size(IconSizeTokens.touchTarget)
+                    .background(Color.White.copy(alpha = OpacityTokens.prominent), CircleShape)
             ) {
                 Icon(
                     imageVector = Icons.Default.Close,
@@ -95,6 +101,7 @@ fun VideoOnboardingScreen(
             modifier = Modifier
                 .fillMaxSize()
                 .padding(bottom = 180.dp) // Reserve space for bottom controls
+                .padding(horizontal = SpacingTokens.screenEdge)
         ) { page ->
             when (page) {
                 0 -> ProblemPage()
@@ -111,91 +118,71 @@ fun VideoOnboardingScreen(
                 .fillMaxWidth()
                 .align(Alignment.BottomCenter)
                 .navigationBarsPadding()
-                .padding(horizontal = 24.dp, vertical = 16.dp),
+                .padding(horizontal = SpacingTokens.lg, vertical = SpacingTokens.md),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
             // Page indicators
             Row(
                 horizontalArrangement = Arrangement.spacedBy(8.dp),
-                modifier = Modifier.padding(bottom = 24.dp)
+                modifier = Modifier.padding(bottom = SpacingTokens.lg)
             ) {
                 repeat(5) { index ->
                     Box(
                         modifier = Modifier
                             .size(if (index == pagerState.currentPage) 24.dp else 8.dp, 8.dp)
-                            .clip(RoundedCornerShape(4.dp))
+                            .clip(RoundedCornerShape(ShapeTokens.xs))
                             .background(
                                 if (index == pagerState.currentPage)
                                     WakeUpColors.iosBlue
                                 else
-                                    Color.White.copy(alpha = 0.4f)
+                                    Color.White.copy(alpha = OpacityTokens.borderLight)
                             )
                             .animateContentSize()
                     )
                 }
             }
 
-            // Navigation buttons
+            // Navigation buttons - using unified WakeUpButton
             if (pagerState.currentPage < 4) {
-                Button(
+                WakeUpButton(
                     onClick = {
                         scope.launch {
                             pagerState.animateScrollToPage(pagerState.currentPage + 1)
                         }
                     },
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .height(56.dp),
-                    shape = RoundedCornerShape(16.dp),
-                    colors = ButtonDefaults.buttonColors(
-                        containerColor = WakeUpColors.iosBlue
-                    )
-                ) {
-                    Text(
-                        text = "Continue",
-                        style = MaterialTheme.typography.labelLarge,
-                        fontWeight = FontWeight.SemiBold
-                    )
-                    Spacer(modifier = Modifier.width(8.dp))
-                    Icon(
-                        imageVector = Icons.Default.ArrowForward,
-                        contentDescription = null
-                    )
-                }
+                    text = "Continue",
+                    variant = ButtonVariant.PRIMARY,
+                    size = ButtonSize.LARGE,
+                    icon = {
+                        Spacer(modifier = Modifier.width(SpacingTokens.sm))
+                        Icon(
+                            imageVector = Icons.Default.ArrowForward,
+                            contentDescription = null
+                        )
+                    }
+                )
             } else {
-                Button(
+                WakeUpButton(
                     onClick = onComplete,
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .height(56.dp),
-                    shape = RoundedCornerShape(16.dp),
-                    colors = ButtonDefaults.buttonColors(
-                        containerColor = WakeUpColors.iosGold
-                    )
-                ) {
-                    Text(
-                        text = "Get Started",
-                        style = MaterialTheme.typography.labelLarge,
-                        fontWeight = FontWeight.SemiBold,
-                        color = Color.Black
-                    )
-                    Spacer(modifier = Modifier.width(8.dp))
-                    Icon(
-                        imageVector = Icons.Default.Check,
-                        contentDescription = null,
-                        tint = Color.Black
-                    )
-                }
+                    text = "Get Started",
+                    variant = ButtonVariant.PREMIUM,
+                    size = ButtonSize.LARGE,
+                    icon = {
+                        Spacer(modifier = Modifier.width(SpacingTokens.sm))
+                        Icon(
+                            imageVector = Icons.Default.Check,
+                            contentDescription = null,
+                            tint = Color.Black
+                        )
+                    }
+                )
 
-                Spacer(modifier = Modifier.height(12.dp))
+                Spacer(modifier = Modifier.height(SpacingTokens.sm))
 
-                TextButton(onClick = onComplete) {
-                    Text(
-                        text = "Continue Free",
-                        style = MaterialTheme.typography.labelLarge,
-                        color = Color.White.copy(alpha = 0.8f)
-                    )
-                }
+                WakeUpTextButton(
+                    onClick = onComplete,
+                    text = "Continue Free"
+                )
             }
         }
     }
@@ -223,13 +210,13 @@ private fun ProblemPage() {
             color = Color.White
         )
 
-        Spacer(modifier = Modifier.height(24.dp))
+        Spacer(modifier = Modifier.height(SpacingTokens.lg))
 
         Text(
             text = "You're not alone. 60% of people snooze through their alarm at least once a week.",
             style = MaterialTheme.typography.bodyLarge,
             textAlign = TextAlign.Center,
-            color = Color.White.copy(alpha = 0.85f)
+            color = Color.White.copy(alpha = OpacityTokens.border)
         )
 
         Spacer(modifier = Modifier.weight(0.6f))
@@ -237,10 +224,10 @@ private fun ProblemPage() {
         Text(
             text = "Swipe to explore",
             style = MaterialTheme.typography.labelLarge,
-            color = Color.White.copy(alpha = 0.5f)
+            color = Color.White.copy(alpha = OpacityTokens.strong)
         )
 
-        Spacer(modifier = Modifier.height(8.dp))
+        Spacer(modifier = Modifier.height(SpacingTokens.sm))
     }
 }
 
@@ -266,16 +253,16 @@ private fun SuperchargePage() {
             color = Color.White
         )
 
-        Spacer(modifier = Modifier.height(20.dp))
+        Spacer(modifier = Modifier.height(SpacingTokens.mdLg))
 
         Text(
             text = "WakeUp forces you to get up and move with missions that require your full attention.",
             style = MaterialTheme.typography.bodyLarge,
             textAlign = TextAlign.Center,
-            color = Color.White.copy(alpha = 0.85f)
+            color = Color.White.copy(alpha = OpacityTokens.border)
         )
 
-        Spacer(modifier = Modifier.height(40.dp))
+        Spacer(modifier = Modifier.height(SpacingTokens.xl))
 
         // Mission type pills
         FlowRow(
@@ -301,9 +288,9 @@ private fun MissionTypePill(
 ) {
     Box(
         modifier = Modifier
-            .clip(RoundedCornerShape(20.dp))
-            .background(color.copy(alpha = 0.25f))
-            .padding(horizontal = 16.dp, vertical = 8.dp)
+            .clip(RoundedCornerShape(ShapeTokens.xl))
+            .background(color.copy(alpha = OpacityTokens.strong))
+            .padding(horizontal = SpacingTokens.md, vertical = SpacingTokens.sm)
     ) {
         Text(
             text = label,
@@ -336,16 +323,16 @@ private fun MissionsShowcasePage() {
             color = Color.White
         )
 
-        Spacer(modifier = Modifier.height(16.dp))
+        Spacer(modifier = Modifier.height(SpacingTokens.md))
 
         Text(
             text = "Complete challenges to dismiss your alarm. No snoozing allowed!",
             style = MaterialTheme.typography.bodyLarge,
             textAlign = TextAlign.Center,
-            color = Color.White.copy(alpha = 0.85f)
+            color = Color.White.copy(alpha = OpacityTokens.border)
         )
 
-        Spacer(modifier = Modifier.height(40.dp))
+        Spacer(modifier = Modifier.height(SpacingTokens.xl))
 
         // Difficulty chips
         Row(
@@ -395,9 +382,9 @@ private fun MissionsShowcasePage() {
 private fun DifficultyChip(label: String, color: Color) {
     Box(
         modifier = Modifier
-            .clip(RoundedCornerShape(16.dp))
-            .background(color.copy(alpha = 0.2f))
-            .padding(horizontal = 20.dp, vertical = 10.dp)
+            .clip(RoundedCornerShape(ShapeTokens.md))
+            .background(color.copy(alpha = OpacityTokens.light))
+            .padding(horizontal = SpacingTokens.mdLg, vertical = SpacingTokens.smMd)
     ) {
         Text(
             text = label,
@@ -418,22 +405,22 @@ private fun MissionPreviewCard(
 ) {
     Column(
         modifier = modifier
-            .clip(RoundedCornerShape(16.dp))
-            .background(Color.White.copy(alpha = 0.12f))
-            .padding(16.dp),
+            .clip(RoundedCornerShape(ShapeTokens.md))
+            .background(Color.White.copy(alpha = OpacityTokens.light))
+            .padding(SpacingTokens.md),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         Box(
             modifier = Modifier
-                .size(44.dp)
-                .background(color.copy(alpha = 0.25f), CircleShape),
+                .size(IconSizeTokens.xxl)
+                .background(color.copy(alpha = OpacityTokens.strong), CircleShape),
             contentAlignment = Alignment.Center
         ) {
             Icon(
                 imageVector = icon,
                 contentDescription = null,
                 tint = color,
-                modifier = Modifier.size(24.dp)
+                modifier = Modifier.size(IconSizeTokens.md)
             )
         }
 
@@ -446,10 +433,12 @@ private fun MissionPreviewCard(
             color = Color.White
         )
 
+        Spacer(modifier = Modifier.height(SpacingTokens.sm))
+
         Text(
             text = description,
             style = MaterialTheme.typography.labelMedium,
-            color = Color.White.copy(alpha = 0.7f),
+            color = Color.White.copy(alpha = OpacityTokens.borderMedium),
             textAlign = TextAlign.Center
         )
     }

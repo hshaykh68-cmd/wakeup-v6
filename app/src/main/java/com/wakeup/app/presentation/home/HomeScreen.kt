@@ -48,6 +48,10 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.wakeup.app.core.theme.WakeUpColors
+import com.wakeup.app.core.designsystem.tokens.OpacityTokens
+import com.wakeup.app.core.designsystem.tokens.SpacingTokens
+import com.wakeup.app.core.designsystem.tokens.ShapeTokens
+import com.wakeup.app.core.designsystem.tokens.IconSizeTokens
 import com.wakeup.app.core.extensions.bounceClick
 import com.wakeup.app.domain.model.Alarm
 
@@ -121,12 +125,12 @@ private fun HomeHeader(streak: Int, greeting: String) {
             modifier = Modifier
                 .fillMaxWidth()
                 .height(80.dp)
-                .clip(RoundedCornerShape(20.dp))
+                .clip(RoundedCornerShape(ShapeTokens.mdLg))
                 .background(
                     brush = Brush.horizontalGradient(
                         colors = listOf(
-                            WakeUpColors.iosBlue.copy(alpha = 0.15f),
-                            WakeUpColors.iosPurple.copy(alpha = 0.1f)
+                            WakeUpColors.iosBlue.copy(alpha = OpacityTokens.light),
+                            WakeUpColors.iosPurple.copy(alpha = OpacityTokens.subtle)
                         )
                     )
                 )
@@ -158,16 +162,16 @@ private fun HomeHeader(streak: Int, greeting: String) {
             // Streak badge with glassmorphism
             Box(
                 modifier = Modifier
-                    .clip(RoundedCornerShape(16.dp))
+                    .clip(RoundedCornerShape(ShapeTokens.mdLg))
                     .background(
                         brush = Brush.linearGradient(
                             colors = listOf(
-                                WakeUpColors.iosOrange.copy(alpha = 0.2f),
-                                WakeUpColors.iosOrange.copy(alpha = 0.1f)
+                                WakeUpColors.iosOrange.copy(alpha = OpacityTokens.light),
+                                WakeUpColors.iosOrange.copy(alpha = OpacityTokens.subtle)
                             )
                         )
                     )
-                    .padding(horizontal = 12.dp, vertical = 8.dp)
+                    .padding(horizontal = SpacingTokens.smMd, vertical = SpacingTokens.sm)
             ) {
                 Row(
                     horizontalArrangement = Arrangement.spacedBy(6.dp),

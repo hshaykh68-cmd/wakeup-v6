@@ -54,6 +54,14 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import com.wakeup.app.core.billing.BillingManager
 import com.wakeup.app.core.billing.BillingState
 import com.wakeup.app.core.theme.WakeUpColors
+import com.wakeup.app.core.designsystem.tokens.OpacityTokens
+import com.wakeup.app.core.designsystem.tokens.SpacingTokens
+import com.wakeup.app.core.designsystem.tokens.ShapeTokens
+import com.wakeup.app.core.designsystem.tokens.IconSizeTokens
+import com.wakeup.app.core.designsystem.components.buttons.WakeUpButton
+import com.wakeup.app.core.designsystem.components.buttons.ButtonVariant
+import com.wakeup.app.core.designsystem.components.buttons.ButtonSize
+import com.wakeup.app.core.designsystem.components.buttons.WakeUpTextButton
 import com.wakeup.app.domain.service.HapticsController
 import com.wakeup.app.domain.model.PremiumType
 
@@ -129,7 +137,7 @@ fun PremiumScreen(
             } else {
                 // Pricing with selectable plans
                 Row(
-                    modifier = Modifier.fillMaxWidth(),
+                    modifier = Modifier.fillMaxWidth().height(56.dp).padding(top = SpacingTokens.lg),
                     horizontalArrangement = Arrangement.spacedBy(12.dp)
                 ) {
                     SelectablePricingCard(
@@ -194,7 +202,7 @@ fun PremiumScreen(
                     modifier = Modifier
                         .fillMaxWidth()
                         .height(56.dp),
-                    shape = RoundedCornerShape(16.dp),
+                    shape = RoundedCornerShape(ShapeTokens.md),
                     colors = ButtonDefaults.buttonColors(
                         containerColor = WakeUpColors.iosPurple
                     ),
@@ -263,19 +271,14 @@ private fun GlassPremiumHeader() {
     Box(
         modifier = Modifier
             .fillMaxWidth()
-            .clip(RoundedCornerShape(24.dp))
+            .clip(RoundedCornerShape(ShapeTokens.smMd))
             .background(
                 brush = Brush.linearGradient(
                     colors = listOf(
-                        WakeUpColors.iosPurple.copy(alpha = 0.8f),
-                        WakeUpColors.iosBlue.copy(alpha = 0.6f)
+                        WakeUpColors.iosBlue.copy(alpha = OpacityTokens.intense),
+                        WakeUpColors.iosPurple.copy(alpha = OpacityTokens.strong)
                     )
                 )
-            )
-            .border(
-                width = 1.dp,
-                color = Color.White.copy(alpha = 0.3f),
-                shape = RoundedCornerShape(24.dp)
             )
             .padding(32.dp),
         contentAlignment = Alignment.Center
@@ -316,19 +319,19 @@ private fun GlassFeaturesSection() {
     Box(
         modifier = Modifier
             .fillMaxWidth()
-            .clip(RoundedCornerShape(20.dp))
+            .clip(RoundedCornerShape(ShapeTokens.mdLg))
             .background(
-                brush = Brush.linearGradient(
+                brush = Brush.verticalGradient(
                     colors = listOf(
-                        Color.White.copy(alpha = 0.12f),
-                        Color.White.copy(alpha = 0.06f)
+                        Color.White.copy(alpha = OpacityTokens.light),
+                        Color.White.copy(alpha = OpacityTokens.subtle)
                     )
                 )
             )
             .border(
                 width = 1.dp,
-                color = Color.White.copy(alpha = 0.15f),
-                shape = RoundedCornerShape(20.dp)
+                color = Color.White.copy(alpha = OpacityTokens.borderLight),
+                shape = RoundedCornerShape(ShapeTokens.mdLg)
             )
     ) {
         Column(

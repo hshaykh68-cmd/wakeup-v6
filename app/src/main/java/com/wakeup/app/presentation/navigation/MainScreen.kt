@@ -51,6 +51,10 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import com.wakeup.app.core.theme.WakeUpColors
+import com.wakeup.app.core.designsystem.tokens.OpacityTokens
+import com.wakeup.app.core.designsystem.tokens.SpacingTokens
+import com.wakeup.app.core.designsystem.tokens.ShapeTokens
+import com.wakeup.app.core.designsystem.tokens.IconSizeTokens
 import com.wakeup.app.data.admob.AdMobManager
 import com.wakeup.app.domain.service.HapticsController
 import com.wakeup.app.presentation.alarms.AlarmListScreen
@@ -171,19 +175,19 @@ private fun GlassmorphicBottomNav(
     Box(
         modifier = Modifier
             .fillMaxWidth()
-            .padding(horizontal = 16.dp, vertical = 12.dp)
+            .padding(horizontal = SpacingTokens.md, vertical = SpacingTokens.sm),
     ) {
         // Glassmorphic container with blur
         Box(
             modifier = Modifier
                 .fillMaxWidth()
                 .height(72.dp)
-                .clip(RoundedCornerShape(24.dp))
+                .clip(RoundedCornerShape(ShapeTokens.lg))
                 .background(
                     brush = Brush.verticalGradient(
                         colors = listOf(
-                            Color.White.copy(alpha = 0.15f),
-                            Color.White.copy(alpha = 0.05f)
+                            Color.White.copy(alpha = OpacityTokens.medium),
+                            Color.White.copy(alpha = OpacityTokens.subtle)
                         )
                     )
                 )
@@ -194,8 +198,8 @@ private fun GlassmorphicBottomNav(
             modifier = Modifier
                 .fillMaxWidth()
                 .height(72.dp)
-                .clip(RoundedCornerShape(24.dp))
-                .background(Color.White.copy(alpha = 0.08f))
+                .clip(RoundedCornerShape(ShapeTokens.lg))
+                .background(Color.White.copy(alpha = OpacityTokens.light))
                 .padding(horizontal = 8.dp),
             horizontalArrangement = Arrangement.SpaceEvenly,
             verticalAlignment = Alignment.CenterVertically
@@ -217,14 +221,14 @@ private fun GlassmorphicBottomNav(
                     // Icon with glassmorphic background when selected
                     Box(
                         modifier = Modifier
-                            .size(44.dp)
-                            .clip(RoundedCornerShape(12.dp))
+                            .size(IconSizeTokens.xxl)
+                            .clip(RoundedCornerShape(ShapeTokens.smMd))
                             .background(
                                 if (selected) {
                                     Brush.linearGradient(
                                         colors = listOf(
-                                            WakeUpColors.iosBlue.copy(alpha = 0.3f),
-                                            WakeUpColors.iosPurple.copy(alpha = 0.2f)
+                                            WakeUpColors.iosBlue.copy(alpha = OpacityTokens.intense),
+                                            WakeUpColors.iosPurple.copy(alpha = OpacityTokens.strong)
                                         )
                                     )
                                 } else {
@@ -238,8 +242,8 @@ private fun GlassmorphicBottomNav(
                         Icon(
                             imageVector = if (selected) item.selectedIcon else item.unselectedIcon,
                             contentDescription = item.label,
-                            tint = if (selected) Color.White else Color.White.copy(alpha = 0.6f),
-                            modifier = Modifier.size(24.dp)
+                            tint = if (selected) Color.White else Color.White.copy(alpha = OpacityTokens.intense),
+                            modifier = Modifier.size(IconSizeTokens.md)
                         )
                     }
 
@@ -249,7 +253,7 @@ private fun GlassmorphicBottomNav(
                         text = item.label,
                         fontSize = 11.sp,
                         fontWeight = if (selected) FontWeight.SemiBold else FontWeight.Normal,
-                        color = if (selected) Color.White else Color.White.copy(alpha = 0.6f)
+                        color = if (selected) Color.White else Color.White.copy(alpha = OpacityTokens.intense)
                     )
                 }
             }

@@ -63,6 +63,10 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.wakeup.app.core.theme.WakeUpColors
+import com.wakeup.app.core.designsystem.tokens.OpacityTokens
+import com.wakeup.app.core.designsystem.tokens.SpacingTokens
+import com.wakeup.app.core.designsystem.tokens.ShapeTokens
+import com.wakeup.app.core.designsystem.tokens.IconSizeTokens
 import com.wakeup.app.domain.service.HapticsController
 import com.wakeup.app.domain.model.Alarm
 import com.wakeup.app.domain.model.MissionDifficulty
@@ -141,8 +145,8 @@ fun AlarmListScreen(
                 modifier = Modifier
                     .fillMaxSize()
                     .padding(padding),
-                contentPadding = PaddingValues(horizontal = 20.dp, vertical = 8.dp),
-                verticalArrangement = Arrangement.spacedBy(12.dp)
+                contentPadding = PaddingValues(horizontal = SpacingTokens.screenEdge, vertical = SpacingTokens.sm),
+                verticalArrangement = Arrangement.spacedBy(SpacingTokens.sm)
             ) {
                 items(alarms, key = { it.id }) { alarm ->
                     SwipeableAlarmCard(
@@ -177,7 +181,7 @@ fun AlarmListScreen(
                         onDuplicate = { viewModel.duplicateAlarm(alarm.id) }
                     )
                 }
-                item { Spacer(modifier = Modifier.height(80.dp)) }
+                item { Spacer(modifier = Modifier.height(SpacingTokens.xxl)) }
             }
             }
         }
@@ -462,7 +466,7 @@ private fun AlarmCard(
         Column(
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(16.dp)
+                .padding(SpacingTokens.mdLg),
         ) {
             Row(
                 modifier = Modifier.fillMaxWidth(),

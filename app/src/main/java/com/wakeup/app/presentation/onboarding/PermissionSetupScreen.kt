@@ -42,6 +42,12 @@ import androidx.compose.ui.unit.sp
 import androidx.core.content.ContextCompat
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.wakeup.app.core.theme.WakeUpColors
+import com.wakeup.app.core.designsystem.tokens.OpacityTokens
+import com.wakeup.app.core.designsystem.tokens.SpacingTokens
+import com.wakeup.app.core.designsystem.tokens.ShapeTokens
+import com.wakeup.app.core.designsystem.components.buttons.WakeUpButton
+import com.wakeup.app.core.designsystem.components.buttons.ButtonVariant
+import com.wakeup.app.core.designsystem.components.buttons.ButtonSize
 
 @Composable
 fun PermissionSetupScreen(
@@ -78,7 +84,7 @@ fun PermissionSetupScreen(
             .fillMaxSize()
             .statusBarsPadding()
             .navigationBarsPadding()
-            .padding(24.dp),
+            .padding(SpacingTokens.lg),
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.SpaceBetween
     ) {
@@ -125,7 +131,7 @@ fun PermissionSetupScreen(
         Spacer(modifier = Modifier.height(32.dp))
 
         // Grant button with navigation bar padding
-        Button(
+        WakeUpButton(
             onClick = {
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU && !notificationPermissionGranted) {
                     permissionLauncher.launch(Manifest.permission.POST_NOTIFICATIONS)
@@ -134,21 +140,10 @@ fun PermissionSetupScreen(
                     onPermissionsGranted()
                 }
             },
-            modifier = Modifier
-                .fillMaxWidth()
-                .height(56.dp)
-                .navigationBarsPadding(),
-            shape = RoundedCornerShape(16.dp),
-            colors = ButtonDefaults.buttonColors(
-                containerColor = WakeUpColors.iosBlue
-            )
-        ) {
-            Text(
-                text = if (allPermissionsGranted) "Continue" else "Grant Permissions",
-                fontSize = 18.sp,
-                fontWeight = FontWeight.SemiBold
-            )
-        }
+            text = if (allPermissionsGranted) "Continue" else "Grant Permissions",
+            variant = ButtonVariant.PRIMARY,
+            size = ButtonSize.LARGE
+        )
     }
 }
 
