@@ -191,10 +191,8 @@ fun EdgeGlow(
                         glowColor.copy(alpha = intensity * 0.3f),
                         Color.Transparent
                     ),
-                    startX = 0f,
-                    endX = 0f,
-                    startY = 0f,
-                    endY = size.height
+                    start = Offset(0f, 0f),
+                    end = Offset(0f, size.height)
                 ),
                 topLeft = Offset(0f, 0f),
                 size = androidx.compose.ui.geometry.Size(strokeWidth, size.height),
@@ -209,10 +207,8 @@ fun EdgeGlow(
                         glowColor.copy(alpha = intensity * 0.2f),
                         glowColor.copy(alpha = intensity * 0.4f)
                     ),
-                    startX = size.width - strokeWidth,
-                    endX = size.width,
-                    startY = 0f,
-                    endY = size.height
+                    start = Offset(size.width - strokeWidth, 0f),
+                    end = Offset(size.width, size.height)
                 ),
                 topLeft = Offset(size.width - strokeWidth, 0f),
                 size = androidx.compose.ui.geometry.Size(strokeWidth, size.height),

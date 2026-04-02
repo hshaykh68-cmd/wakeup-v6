@@ -319,7 +319,7 @@ fun AuroraBackgroundInteractive(
                 color = WakeUpColors.iosBlue.copy(alpha = 0.4f),
                 radius = size.minDimension * 0.35f,
                 center = Offset(
-                    size.width * 0.7f + cos(time * 1.2f + PI) * size.width * 0.12f + parallaxX * 0.5f,
+                    size.width * 0.7f + cos(time * 1.2f + PI.toFloat()) * size.width * 0.12f + parallaxX * 0.5f,
                     size.height * 0.6f + sin(time * 0.9f) * size.height * 0.15f + parallaxY * 0.5f
                 )
             )

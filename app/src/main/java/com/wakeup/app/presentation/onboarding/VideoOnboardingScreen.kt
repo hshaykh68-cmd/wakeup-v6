@@ -28,6 +28,7 @@ import androidx.compose.ui.unit.Constraints
 import androidx.compose.ui.unit.Density
 import androidx.compose.ui.unit.LayoutDirection
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import com.wakeup.app.R
 import com.wakeup.app.core.theme.WakeUpColors
 import com.wakeup.app.core.designsystem.tokens.OpacityTokens

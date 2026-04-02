@@ -1,18 +1,20 @@
 package com.wakeup.app.presentation.home.modifiers
 
 import androidx.compose.animation.core.*
+import androidx.compose.foundation.background
+import androidx.compose.foundation.border
 import androidx.compose.foundation.gestures.detectDragGestures
 import androidx.compose.foundation.gestures.detectTapGestures
 import androidx.compose.foundation.layout.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.composed
+import androidx.compose.ui.draw.blur
+import androidx.compose.ui.draw.drawBehind
 import androidx.compose.ui.draw.scale
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.*
-import androidx.compose.ui.graphics.drawscope.drawIntoCanvas
 import androidx.compose.ui.input.pointer.pointerInput
-import androidx.compose.ui.input.pointer.positionChange
 import androidx.compose.ui.unit.dp
 import com.wakeup.app.core.theme.WakeUpColors
 import kotlinx.coroutines.launch
@@ -83,12 +85,10 @@ fun Modifier.jellyDragEffect(
     var isDragging by remember { mutableStateOf(false) }
     val coroutineScope = rememberCoroutineScope()
 
-    // Spring animation for release
     val offsetX = remember { Animatable(0f) }
     val offsetY = remember { Animatable(0f) }
     val scaleX = remember { Animatable(1f) }
     val scaleY = remember { Animatable(1f) }
-    val skewX = remember { Animatable(0f) }
 
     LaunchedEffect(isDragging) {
         if (!isDragging) {
@@ -114,12 +114,6 @@ fun Modifier.jellyDragEffect(
             launch {
                 scaleY.animateTo(
                     1f,
-                    spring(dampingRatio = Spring.DampingRatioMediumBouncy, stiffness = Spring.StiffnessMedium)
-                )
-            }
-            launch {
-                skewX.animateTo(
-                    0f,
                     spring(dampingRatio = Spring.DampingRatioMediumBouncy, stiffness = Spring.StiffnessMedium)
                 )
             }
@@ -191,6 +185,7 @@ fun Modifier.springReleaseEffect(
     this
         .scale(scale)
         .drawBehind {
+            val drawScope = this
             if (glowBurst > 0f) {
                 drawCircle(
                     brush = Brush.radialGradient(
@@ -199,8 +194,8 @@ fun Modifier.springReleaseEffect(
                             WakeUpColors.iosPurple.copy(alpha = 0.3f * glowBurst),
                             Color.Transparent
                         ),
-                        center = center,
-                        radius = size.maxDimension * 0.6f * glowBurst
+                        center = drawScope.center,
+                        radius = drawScope.size.maxDimension * 0.6f * glowBurst
                     )
                 )
             }
@@ -283,6 +278,7 @@ fun Modifier.physicsGlassInteraction(
             this.ambientShadowColor = WakeUpColors.iosPurple.copy(alpha = 0.2f)
         }
         .drawBehind {
+            val drawScope = this
             // Press indentation shadow
             if (isPressed) {
                 drawRect(
@@ -291,8 +287,8 @@ fun Modifier.physicsGlassInteraction(
                             Color.Black.copy(alpha = 0.15f),
                             Color.Transparent
                         ),
-                        center = center,
-                        radius = size.maxDimension * 0.4f
+                        center = drawScope.center,
+                        radius = drawScope.size.maxDimension * 0.4f
                     ),
                     blendMode = BlendMode.Multiply
                 )
@@ -308,8 +304,8 @@ fun Modifier.physicsGlassInteraction(
                             WakeUpColors.iosTeal.copy(alpha = 0.2f * glowBurst),
                             Color.Transparent
                         ),
-                        center = center,
-                        radius = size.maxDimension * 0.8f * glowBurst
+                        center = drawScope.center,
+                        radius = drawScope.size.maxDimension * 0.8f * glowBurst
                     ),
                     blendMode = BlendMode.Screen
                 )
@@ -419,6 +415,7 @@ fun Modifier.breathingGlow(
     val glowAlpha = minAlpha + (maxAlpha - minAlpha) * alpha
 
     this.drawBehind {
+        val drawScope = this
         drawRect(
             brush = Brush.radialGradient(
                 colors = listOf(
@@ -426,8 +423,8 @@ fun Modifier.breathingGlow(
                     color.copy(alpha = glowAlpha * 0.5f),
                     Color.Transparent
                 ),
-                center = center,
-                radius = size.maxDimension * 0.6f
+                center = drawScope.center,
+                radius = drawScope.size.maxDimension * 0.6f
             )
         )
     }
@@ -461,8 +458,9 @@ fun Modifier.liquidTouchRipple(
 
     this
         .drawBehind {
+            val drawScope = this
             if (rippleProgress > 0f && rippleRadius > 0f) {
-                val radius = size.maxDimension * 0.5f * rippleRadius
+                val radius = drawScope.size.maxDimension * 0.5f * rippleRadius
                 val alpha = (1f - rippleProgress) * 0.4f
 
                 drawCircle(

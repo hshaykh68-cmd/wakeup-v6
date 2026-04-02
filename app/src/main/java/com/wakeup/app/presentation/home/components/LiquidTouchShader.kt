@@ -7,9 +7,9 @@ import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.layout.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.drawBehind
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.*
-import androidx.compose.ui.graphics.drawscope.DrawScope
 import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.unit.dp
 import com.wakeup.app.core.theme.WakeUpColors
@@ -274,8 +274,8 @@ fun LiquidButton(
                         for (i in 0..points) {
                             val x = size.width * i / points
                             val wave = kotlin.math.sin(
-                                (i.toFloat() / points) * 4 * Math.PI + wavePhase
-                            ) * waveAmplitude
+                                (i.toFloat() / points) * 4 * Math.PI.toFloat() + wavePhase
+                            ).toFloat() * waveAmplitude
                             val y = size.height - fillHeight + wave
                             lineTo(x, y.toFloat())
                         }
