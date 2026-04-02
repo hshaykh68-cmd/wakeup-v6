@@ -18,6 +18,10 @@ workflows:
           curl -L -o gradle/wrapper/gradle-wrapper.jar https://raw.githubusercontent.com/gradle/gradle/v8.2.0/gradle/wrapper/gradle-wrapper.jar
           chmod +x gradlew
           
+      - name: Clean Build Cache
+        script: |
+          ./gradlew clean
+          
       - name: Download dependencies
         script: |
           ./gradlew dependencies
