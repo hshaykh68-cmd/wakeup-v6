@@ -17,6 +17,7 @@ import com.wakeup.app.core.util.SleepPhaseDetector
 import com.wakeup.app.MainActivity
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.Job
 import kotlinx.coroutines.SupervisorJob
 import kotlinx.coroutines.cancel
 import kotlinx.coroutines.delay
@@ -237,7 +238,7 @@ class SmartWakeService : Service() {
     }
 
     private fun isActive(): Boolean {
-        return isMonitoring && serviceScope.isActive
+        return isMonitoring && serviceScope.coroutineContext[Job]?.isActive == true
     }
 
     private fun createNotificationChannel() {
