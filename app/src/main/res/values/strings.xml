@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">WakeUp</string>
+    <string name="alarm_widget_description">Quick access to your next alarm</string>
+</resources>

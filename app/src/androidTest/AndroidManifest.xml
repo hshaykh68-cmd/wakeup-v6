@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.wakeup.app.test">
+
+    <application
+        android:usesCleartextTraffic="true">
+        <uses-library android:name="android.test.runner" />
+    </application>
+
+    <instrumentation
+        android:name="com.wakeup.app.CustomTestRunner"
+        android:targetPackage="com.wakeup.app"
+        android:handleProfiling="true"
+        android:functionalTest="false"
+        android:label="Tests for WakeUp App" />
+
+</manifest>
