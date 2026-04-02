@@ -23,6 +23,7 @@ import com.wakeup.app.core.oem.OEMDetectorImpl
 import com.wakeup.app.data.local.dao.SleepDao
 import com.wakeup.app.data.repository.SleepSoundRepositoryImpl
 import com.wakeup.app.data.repository.OEMSettingsRepositoryImpl
+import com.wakeup.app.data.repository.WidgetStateRepositoryImpl
 import com.wakeup.app.domain.repository.WidgetStateRepository
 import com.wakeup.app.domain.repository.SleepSoundRepository
 import com.wakeup.app.domain.repository.OEMSettingsRepository
