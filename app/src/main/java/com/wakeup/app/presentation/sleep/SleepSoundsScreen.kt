@@ -746,10 +746,7 @@ private fun FloatingParticles() {
                             CircleShape
                         )
                         .align(
-                            Alignment(
-                                (offsetX * 2 - 1).coerceIn(-1f, 1f),
-                                (offsetY * 2 - 1).coerceIn(-1f, 1f)
-                            )
+                            Alignment.TopStart
                         )
                 )
             }

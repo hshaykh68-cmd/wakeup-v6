@@ -133,7 +133,8 @@ fun MainScreen(
             }
             composable(Screen.Settings.route) {
                 SettingsScreen(
-                    onNavigateToPremium = onNavigateToPremium
+                    onNavigateToPremium = onNavigateToPremium,
+                    onNavigateToOEMSetup = onNavigateToOEMSetup
                 )
             }
         }

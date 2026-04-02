@@ -44,7 +44,7 @@ import com.patrykandpatrick.vico.compose.chart.Chart
 import com.patrykandpatrick.vico.compose.chart.column.columnChart
 import com.patrykandpatrick.vico.compose.chart.line.lineChart
 import com.patrykandpatrick.vico.compose.component.lineComponent
-import com.patrykandpatrick.vico.core.chart.line.LineSpec
+import com.patrykandpatrick.vico.compose.chart.line.lineSpec
 import com.patrykandpatrick.vico.core.axis.AxisPosition
 import com.patrykandpatrick.vico.core.axis.formatter.AxisValueFormatter
 import com.patrykandpatrick.vico.core.chart.values.AxisValuesOverrider
@@ -227,7 +227,11 @@ private fun TimeRangeToggle(
                                         WakeUpColors.iosPurple
                                     )
                                 )
-                            } else null
+                            } else {
+                                Brush.linearGradient(
+                                    colors = listOf(Color.Transparent, Color.Transparent)
+                                )
+                            }
                         )
                         .clickable { onRangeSelected(range) }
                         .padding(vertical = 12.dp),
@@ -638,7 +642,7 @@ private fun AllTimeChart(history: List<WakeHistory>) {
         Chart(
             chart = lineChart(
                 lines = listOf(
-                    LineSpec(
+                    lineSpec(
                         lineColor = WakeUpColors.iosPurple,
                         lineThickness = 3.dp,
                         pointSize = 6.dp,
@@ -898,7 +902,7 @@ private fun WakeUpTimeChart(
         Chart(
             chart = lineChart(
                 lines = listOf(
-                    LineSpec(
+                    lineSpec(
                         lineColor = WakeUpColors.iosBlue,
                         lineThickness = 3.dp,
                         pointSize = if (timeRange == StatsTimeRange.ALL_TIME) 4.dp else 8.dp,
