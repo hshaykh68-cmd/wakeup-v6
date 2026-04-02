@@ -31,7 +31,6 @@ import androidx.compose.ui.unit.dp
 import com.wakeup.app.R
 import com.wakeup.app.core.theme.WakeUpColors
 import kotlinx.coroutines.launch
-
 import androidx.compose.foundation.ExperimentalFoundationApi
 
 @OptIn(ExperimentalFoundationApi::class)
@@ -68,10 +67,11 @@ fun VideoOnboardingScreen(
                 )
         )
 
-        // Skip button (top right)
+        // Skip button (top right) - with status bar padding
         Box(
             modifier = Modifier
                 .fillMaxWidth()
+                .statusBarsPadding()
                 .padding(16.dp),
             contentAlignment = Alignment.TopEnd
         ) {
@@ -89,10 +89,12 @@ fun VideoOnboardingScreen(
             }
         }
 
-        // Page content
+        // Page content - with safe area padding
         HorizontalPager(
             state = pagerState,
-            modifier = Modifier.fillMaxSize()
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(bottom = 180.dp) // Reserve space for bottom controls
         ) { page ->
             when (page) {
                 0 -> ProblemPage()
@@ -103,12 +105,13 @@ fun VideoOnboardingScreen(
             }
         }
 
-        // Bottom controls
+        // Bottom controls - with navigation bar padding
         Column(
             modifier = Modifier
                 .fillMaxWidth()
                 .align(Alignment.BottomCenter)
-                .padding(24.dp),
+                .navigationBarsPadding()
+                .padding(horizontal = 24.dp, vertical = 16.dp),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
             // Page indicators
@@ -204,7 +207,9 @@ private fun ProblemPage() {
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .padding(horizontal = 32.dp, vertical = 80.dp),
+            .padding(horizontal = 32.dp)
+            .statusBarsPadding()
+            .padding(top = 80.dp),
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center
     ) {
@@ -245,7 +250,9 @@ private fun SuperchargePage() {
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .padding(horizontal = 32.dp, vertical = 80.dp),
+            .padding(horizontal = 32.dp)
+            .statusBarsPadding()
+            .padding(top = 60.dp),
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center
     ) {
@@ -313,7 +320,9 @@ private fun MissionsShowcasePage() {
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .padding(horizontal = 32.dp, vertical = 80.dp),
+            .padding(horizontal = 32.dp)
+            .statusBarsPadding()
+            .padding(top = 60.dp),
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center
     ) {
@@ -452,7 +461,9 @@ private fun StatsPreviewPage() {
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .padding(horizontal = 32.dp, vertical = 80.dp),
+            .padding(horizontal = 32.dp)
+            .statusBarsPadding()
+            .padding(top = 60.dp),
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center
     ) {
@@ -606,7 +617,9 @@ private fun FinalCTAPage(onGetStarted: () -> Unit) {
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .padding(horizontal = 32.dp, vertical = 80.dp),
+            .padding(horizontal = 32.dp)
+            .statusBarsPadding()
+            .padding(top = 60.dp),
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center
     ) {

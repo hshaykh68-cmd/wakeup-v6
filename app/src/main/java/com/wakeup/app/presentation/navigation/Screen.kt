@@ -1,10 +1,9 @@
 package com.wakeup.app.presentation.navigation
 
 sealed class Screen(val route: String) {
-    // Main Screens
-    data object Splash : Screen("splash")
-    data object Welcome : Screen("welcome")
-    data object Onboarding : Screen("onboarding")
+    // Onboarding Flow
+    data object VideoOnboarding : Screen("video_onboarding")
+    data object PermissionSetup : Screen("permission_setup")
     data object Main : Screen("main")
     
     // Bottom Nav Tabs
@@ -22,7 +21,6 @@ sealed class Screen(val route: String) {
     data object Mission : Screen("mission")
     data object WakeSuccess : Screen("wake_success")
     data object Premium : Screen("premium")
-    data object PermissionSetup : Screen("permission_setup")
     data object SleepSounds : Screen("sleep_sounds")
     data object OEMSetup : Screen("oem_setup")
 }
