@@ -1,6 +1,7 @@
 package com.wakeup.app.presentation.alarm
 
 import android.net.Uri
+import androidx.camera.core.ExperimentalGetImage
 import androidx.camera.core.ImageProxy
 import androidx.camera.view.PreviewView
 import androidx.compose.animation.AnimatedContent
@@ -584,6 +585,7 @@ private fun ComboPhotoCaptureContent(
     }
 }
 
+@OptIn(ExperimentalGetImage::class)
 private fun processBarcode(
     imageProxy: ImageProxy,
     barcodeScanner: com.google.mlkit.vision.barcode.BarcodeScanner,

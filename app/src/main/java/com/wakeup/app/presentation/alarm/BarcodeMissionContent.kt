@@ -1,6 +1,7 @@
 package com.wakeup.app.presentation.alarm
 
 import android.util.Log
+import androidx.camera.core.ExperimentalGetImage
 import androidx.camera.core.ImageProxy
 import androidx.camera.view.PreviewView
 import androidx.compose.foundation.background
@@ -256,6 +257,7 @@ fun BarcodeMissionContent(
 /**
  * Process image for barcode detection
  */
+@OptIn(ExperimentalGetImage::class)
 private fun processBarcodeImage(
     imageProxy: ImageProxy,
     barcodeScanner: com.google.mlkit.vision.barcode.BarcodeScanner,
