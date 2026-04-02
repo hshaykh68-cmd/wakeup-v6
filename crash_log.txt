@@ -1,0 +1,369 @@
+
+C:\Users\sayae>adb logcat | findstr com.wakeup.app
+04-02 23:14:40.941  4976  4976 W MediaProvider: WorkProfileOwnerApps cache miss for package com.wakeup.app
+04-02 23:14:41.347  4341 25137 I ProximityAuth: [RecentAppsMediator] Package removed: (user=UserHandle{0}) com.wakeup.app
+04-02 23:14:41.393  4341 25137 E PhSharedDirectoryWriter: Failed to delete the DE shared dir for Android package: com.wakeup.app. [CONTEXT service_id=51 ]
+04-02 23:14:41.559 10116 10116 I Finsky  : [2] AIM: AppInfoCacheUpdater -> invalidating apps: [com.wakeup.app]
+04-02 23:14:41.762 10116 10168 I Finsky  : [1726] AIM: AppInfoManager-Perf > OnDeviceAppInfo > cacheHitCount=0, cacheMissCount=1. Missed  in cache (limit 10) : [com.wakeup.app]
+04-02 23:14:42.434  4541 25183 W RWIPackageIntentOps: Registries cleared for package: com.wakeup.app
+04-02 23:14:42.574  4541 14836 E WorkSourceUtil: Could not find package: com.wakeup.app
+04-02 23:14:42.602  4541 16692 I Icing   : doRemovePackageData com.wakeup.app
+04-02 23:14:42.619 10116 25232 I Finsky  : [1890] Asset module storage cleared for package com.wakeup.app.
+04-02 23:14:42.851 10116 10116 W Finsky  : [2] STU: Failed to get storage stats for package 'com.wakeup.app' (1601: Error getting stats: android.content.pm.PackageManager.NameNotFoundException)
+04-02 23:14:42.974  4541 25040 W SQLiteLog: (28) double-quoted string literal: "com.wakeup.app"
+04-02 23:14:44.062  4976 25277 I FuseDaemon: Successfully deleted rows in leveldb for owner_id:  and ownerPackageIdentifier: com.wakeup.app::0
+04-02 23:15:31.295 10116 10116 I Finsky  : [2] VerifyApps: Install-time verification requested for package com.wakeup.app, PackageManager id = 1, Verifier id = 1c62f30c-fdb6-414b-a2d5-8b1cc56e13c8
+04-02 23:15:31.691 10116 25260 I Finsky  : [1891] VerifyApps: Anti-malware verification task started for package=com.wakeup.app
+04-02 23:15:33.308 10116 25260 I Finsky  : [1891] VerifyApps: chooseScanResult for package=com.wakeup.app with timeout=15000ms
+04-02 23:15:33.311 10116 10172 I Finsky  : [1730] VerifyApps: Starting APK Analysis scan for com.wakeup.app.
+04-02 23:15:33.316 10116 10172 I Finsky  : [1730] Scanning package com.wakeup.app contents with client side protections. File: [LEP66gM5G08GUKVSS3HzbbP7Usjun4bR3AQ_MM3FnpY]
+04-02 23:15:33.323 10116 10172 I Finsky  : [1730] VerifyApps: APK Analysis scan finished for com.wakeup.app. Verdict: SAFE
+04-02 23:15:37.332 10116 25812 I Finsky  : [1906] VerifyApps: Verification package=com.wakeup.app, id=1, response=9, upload_requested=false, enable_ecm=true
+04-02 23:15:37.341 10116 25260 I Finsky  : [1891] VerifyApps: ScanResultPicker returned for package=com.wakeup.app: PENDING
+04-02 23:15:37.342 10116 25260 I Finsky  : [1891] VerifyApps: chooseScanResult returning verdict PENDING for package=com.wakeup.app
+04-02 23:16:27.527 10116 10172 I Finsky  : [1730] VerifyApps: waiting for app installation for com.wakeup.app
+04-02 23:16:27.946 10116 10116 I Finsky  : [2] VerifyApps: Install-time verification complete: id=1, package_name=com.wakeup.app
+04-02 23:16:28.692  4109  4109 I SafetyLabelChangedBroadcastReceiver: received broadcast packageName: com.wakeup.app, current user: UserHandle{0}, packageChangeEvent: NEW_INSTALL, intent user: UserHandle{0}
+04-02 23:16:28.794 10116 10116 I Finsky  : [2] AIM: AppInfoCacheUpdater -> invalidating apps: [com.wakeup.app]
+04-02 23:16:28.799 10116 10171 I Finsky  : [1729] AIM: AppInfoManager-Perf > OnDeviceAppInfo > cacheHitCount=0, cacheMissCount=1. Missed  in cache (limit 10) : [com.wakeup.app]
+04-02 23:16:28.843  4341 26215 I ProximityAuth: [RecentAppsMediator] Package added: (user=UserHandle{0}) com.wakeup.app
+04-02 23:16:28.856 10116 10170 I Finsky  : [1728] AIM: AppInfoManager-Perf > OnDeviceAppInfo > cacheHitCount=0, cacheMissCount=1. Missed  in cache (limit 10) : [com.wakeup.app]
+04-02 23:16:29.045 10116 10116 I Finsky  : [2] VerifyApps: app installation complete for com.wakeup.app
+04-02 23:16:29.056 10116 10172 I Finsky  : [1730] VerifyApps: running post install verification task for package: com.wakeup.app, install ID: 1c62f30c-fdb6-414b-a2d5-8b1cc56e13c8
+04-02 23:16:29.245 10116 10172 I Finsky  : [1730] VerifyApps: Putting package com.wakeup.app in ECM mode succeeded
+04-02 23:16:29.528 10116 10172 I Finsky  : [1730] Calculating dex embeddings for package com.wakeup.app. File: [0iLG5RCE1UVLrDaxRtVgN2Ve87modgyZsLiRQ1oNYBk]
+04-02 23:16:29.815 10116 10116 I Finsky  : [2] AIM: AppInfoCacheUpdater -> invalidating apps: [com.wakeup.app]
+04-02 23:16:29.825 10116 10170 I Finsky  : [1728] AIM: AppInfoManager-Perf > OnDeviceAppInfo > cacheHitCount=0, cacheMissCount=1. Missed  in cache (limit 10) : [com.wakeup.app]
+04-02 23:16:40.101 18509 18509 I com.wakeup.app: Late-enabling -Xcheck:jni
+04-02 23:16:40.234 18509 18509 I com.wakeup.app: Using CollectorTypeCC GC.
+04-02 23:16:40.488 18509 18509 E com.wakeup.app: BBinder_init Processname  <pre-initialized>
+04-02 23:16:41.944 18509 26761 W com.wakeup.app: Loading /data/misc/apexdata/com.android.art/dalvik-cache/arm64/system@framework@com.android.location.provider.jar@classes.odex non-executable as it requires an image which we failed to load
+04-02 23:16:42.006 18509 26761 W com.wakeup.app: Loading /data/app/~~k1o8EBgMnE6f8SA8wwU5_w==/com.google.android.gms-73194QPBTfABETVN1NvKbg==/oat/arm64/base.odex non-executable as it requires an image which we failed to load
+04-02 23:16:42.030 18509 18509 E com.wakeup.app: BBinder_init Processname  com.wakeup.app
+04-02 23:16:42.030 18509 18509 E com.wakeup.app: BBinder_init hasGetProcessName  com.wakeup.app
+04-02 23:16:42.224 18509 18509 E AndroidRuntime: Process: com.wakeup.app, PID: 18509
+04-02 23:16:42.224 18509 18509 E AndroidRuntime: java.lang.RuntimeException: Unable to start receiver com.wakeup.app.data.alarm.BootReceiver: java.security.InvalidKeyException: Keystore operation failed
+04-02 23:16:42.224 18509 18509 E AndroidRuntime:        at com.wakeup.app.data.di.DataModule.provideDatabasePassphrase(DataModule.kt:95)
+04-02 23:16:42.224 18509 18509 E AndroidRuntime:        at com.wakeup.app.data.di.DataModule_ProvideDatabasePassphraseFactory.provideDatabasePassphrase(DataModule_ProvideDatabasePassphraseFactory.java:46)
+04-02 23:16:42.224 18509 18509 E AndroidRuntime:        at com.wakeup.app.DaggerWakeUpApplication_HiltComponents_SingletonC$SingletonCImpl$SwitchingProvider.get(DaggerWakeUpApplication_HiltComponents_SingletonC.java:1060)
+04-02 23:16:42.224 18509 18509 E AndroidRuntime:        at com.wakeup.app.DaggerWakeUpApplication_HiltComponents_SingletonC$SingletonCImpl$SwitchingProvider.get(DaggerWakeUpApplication_HiltComponents_SingletonC.java:1057)
+04-02 23:16:42.224 18509 18509 E AndroidRuntime:        at com.wakeup.app.DaggerWakeUpApplication_HiltComponents_SingletonC$SingletonCImpl$SwitchingProvider.get(DaggerWakeUpApplication_HiltComponents_SingletonC.java:1054)
+04-02 23:16:42.224 18509 18509 E AndroidRuntime:        at com.wakeup.app.DaggerWakeUpApplication_HiltComponents_SingletonC$SingletonCImpl$SwitchingProvider.get(DaggerWakeUpApplication_HiltComponents_SingletonC.java:1051)
+04-02 23:16:42.224 18509 18509 E AndroidRuntime:        at com.wakeup.app.DaggerWakeUpApplication_HiltComponents_SingletonC$SingletonCImpl$SwitchingProvider.get(DaggerWakeUpApplication_HiltComponents_SingletonC.java:1048)
+04-02 23:16:42.224 18509 18509 E AndroidRuntime:        at com.wakeup.app.DaggerWakeUpApplication_HiltComponents_SingletonC$SingletonCImpl.rescheduleAllAlarmsUseCase(DaggerWakeUpApplication_HiltComponents_SingletonC.java:914)
+04-02 23:16:42.224 18509 18509 E AndroidRuntime:        at com.wakeup.app.DaggerWakeUpApplication_HiltComponents_SingletonC$SingletonCImpl.injectBootReceiver2(DaggerWakeUpApplication_HiltComponents_SingletonC.java:1012)
+04-02 23:16:42.224 18509 18509 E AndroidRuntime:        at com.wakeup.app.DaggerWakeUpApplication_HiltComponents_SingletonC$SingletonCImpl.injectBootReceiver(DaggerWakeUpApplication_HiltComponents_SingletonC.java:971)
+04-02 23:16:42.224 18509 18509 E AndroidRuntime:        at com.wakeup.app.data.alarm.Hilt_BootReceiver.inject(Hilt_BootReceiver.java:34)
+04-02 23:16:42.224 18509 18509 E AndroidRuntime:        at com.wakeup.app.data.alarm.Hilt_BootReceiver.onReceive(Hilt_BootReceiver.java:27)
+04-02 23:16:42.224 18509 18509 E AndroidRuntime:        at com.wakeup.app.data.alarm.BootReceiver.onReceive(Unknown Source:0)
+04-02 23:16:44.943 25796 25796 I com.wakeup.app: Late-enabling -Xcheck:jni
+04-02 23:16:45.029 25796 25796 I com.wakeup.app: Using CollectorTypeCC GC.
+04-02 23:16:45.212 25796 25796 E com.wakeup.app: BBinder_init Processname  <pre-initialized>
+04-02 23:16:46.564 25796 27015 E com.wakeup.app: BBinder_init Processname  com.wakeup.app
+04-02 23:16:46.566 25796 27015 E com.wakeup.app: BBinder_init hasGetProcessName  com.wakeup.app
+04-02 23:16:46.660 25796 27003 W com.wakeup.app: Loading /data/misc/apexdata/com.android.art/dalvik-cache/arm64/system@framework@com.android.location.provider.jar@classes.odex non-executable as it requires an image which we failed to load
+04-02 23:16:46.839 25796 27003 W com.wakeup.app: Loading /data/app/~~k1o8EBgMnE6f8SA8wwU5_w==/com.google.android.gms-73194QPBTfABETVN1NvKbg==/oat/arm64/base.odex non-executable as it requires an image which we failed to load
+04-02 23:16:46.897 25796 27022 W com.wakeup.app: ClassLoaderContext classpath size mismatch. expected=1, found=0 (DLC[];PCL[base.apk*3532740154]{PCL[/system/framework/org.apache.http.legacy.jar*1230680128]#PCL[/system/framework/com.android.location.provider.jar*3414091812]#PCL[/system/framework/com.android.media.remotedisplay.jar*2042759013]#PCL[/system_ext/framework/androidx.window.extensions.jar*3366631065]#PCL[/system_ext/framework/androidx.window.sidecar.jar*1666522852]} | DLC[];PCL[])
+04-02 23:16:47.745 25796 25796 W com.wakeup.app: Method boolean androidx.compose.runtime.snapshots.SnapshotStateList.conditionalUpdate(boolean, kotlin.jvm.functions.Function1) failed lock verification and will run slower.
+04-02 23:16:47.745 25796 25796 W com.wakeup.app: Common causes for lock verification issues are non-optimized dex code
+04-02 23:16:47.745 25796 25796 W com.wakeup.app: and incorrect proguard optimizations.
+04-02 23:16:47.745 25796 25796 W com.wakeup.app: Method boolean androidx.compose.runtime.snapshots.SnapshotStateList.conditionalUpdate$default(androidx.compose.runtime.snapshots.SnapshotStateList, boolean, kotlin.jvm.functions.Function1, int, java.lang.Object) failed lock verification and will run slower.
+04-02 23:16:47.745 25796 25796 W com.wakeup.app: Method java.lang.Object androidx.compose.runtime.snapshots.SnapshotStateList.mutate(kotlin.jvm.functions.Function1) failed lock verification and will run slower.
+04-02 23:16:47.746 25796 25796 W com.wakeup.app: Method void androidx.compose.runtime.snapshots.SnapshotStateList.update(boolean, kotlin.jvm.functions.Function1) failed lock verification and will run slower.
+04-02 23:16:47.746 25796 25796 W com.wakeup.app: Method void androidx.compose.runtime.snapshots.SnapshotStateList.update$default(androidx.compose.runtime.snapshots.SnapshotStateList, boolean, kotlin.jvm.functions.Function1, int, java.lang.Object) failed lock verification and will run slower.
+04-02 23:16:48.734  1767  1806 I ActivityTaskManager: Displayed com.wakeup.app/.MainActivity for user 0: +3s971ms
+04-02 23:16:48.794 25796 25796 W com.wakeup.app: Loading /data/app/~~hlUObMT1sAByG_pdrLa6jg==/com.google.android.webview-9Dvk1K1EIy8ZavY9u02LCw==/oat/arm64/base.odex non-executable as it requires an image which we failed to load
+04-02 23:16:50.332 25796 27194 W MediaCodec-JNI: pid:25796,client name:com.wakeup.app
+04-02 23:16:50.947 25796 26957 I com.wakeup.app: Compiler allocated 7999KB to compile void android.view.ViewRootImpl.performTraversals()
+04-02 23:16:53.513 25796 26957 I com.wakeup.app: Compiler allocated 4828KB to compile void com.wakeup.app.presentation.onboarding.WelcomeScreenKt.WelcomeScreen(kotlin.jvm.functions.Function0, kotlin.jvm.functions.Function0, androidx.compose.runtime.Composer, int)
+04-02 23:16:55.353 25796 26958 I com.wakeup.app: Background concurrent copying GC freed 14MB AllocSpace bytes, 394(8364KB) LOS objects, 49% free, 6967KB/13MB, paused 481us,60us total 313.780ms
+04-02 23:16:55.365 25796 26960 W com.wakeup.app: ApkAssets: Deleting an ApkAssets object '<empty> and /data/app/~~hlUObMT1sAByG_pdrLa6jg==/com.google.android.webview-9Dvk1K1EIy8ZavY9u02LCw==/base.apk' with 1 weak references
+04-02 23:17:05.668 25796 26958 I com.wakeup.app: Background concurrent copying GC freed 4782KB AllocSpace bytes, 0(0B) LOS objects, 49% free, 9075KB/17MB, paused 244us,121us total 121.314ms
+04-02 23:17:31.683 25796 26958 I com.wakeup.app: Background concurrent copying GC freed 7529KB AllocSpace bytes, 0(0B) LOS objects, 49% free, 10MB/20MB, paused 160us,65us total 100.656ms
+04-02 23:17:43.744 26852 26852 I GrantPermissionsViewModel: Logged buttons presented and clicked permissionGroupName=android.permission-group.NOTIFICATIONS uid=10525 package=com.wakeup.app presentedButtons=9 clickedButton=1 isPermissionRationaleShown=false sessionId=-5394378805455927658 targetSdk=35 prompt=BASIC initialLocationPrecision=0 selectedLocationPrecision=0 locationAccuracyButtonClicked= false
+04-02 23:17:43.767 26852 26852 I GrantPermissionsViewModel: Permission grant result requestId=-5394378805455927658 callingUid=10525 callingPackage=com.wakeup.app permission=android.permission.POST_NOTIFICATIONS isImplicit=false result=4 isPermissionRationaleShown=falseisPackageRestrictedByEnhancedConfirmation=true
+04-02 23:17:45.058 25796 27630 I AudioManager: In isSpeakerphoneOn(), calling application: com.wakeup.app
+04-02 23:17:45.209 25796 25796 E AndroidRuntime: Process: com.wakeup.app, PID: 25796
+04-02 23:17:45.209 25796 25796 E AndroidRuntime:        at com.wakeup.app.data.di.DataModule.provideDatabasePassphrase(DataModule.kt:95)
+04-02 23:17:45.209 25796 25796 E AndroidRuntime:        at com.wakeup.app.data.di.DataModule_ProvideDatabasePassphraseFactory.provideDatabasePassphrase(DataModule_ProvideDatabasePassphraseFactory.java:46)
+04-02 23:17:45.209 25796 25796 E AndroidRuntime:        at com.wakeup.app.DaggerWakeUpApplication_HiltComponents_SingletonC$SingletonCImpl$SwitchingProvider.get(DaggerWakeUpApplication_HiltComponents_SingletonC.java:1060)
+04-02 23:17:45.209 25796 25796 E AndroidRuntime:        at com.wakeup.app.DaggerWakeUpApplication_HiltComponents_SingletonC$SingletonCImpl$SwitchingProvider.get(DaggerWakeUpApplication_HiltComponents_SingletonC.java:1057)
+04-02 23:17:45.209 25796 25796 E AndroidRuntime:        at com.wakeup.app.DaggerWakeUpApplication_HiltComponents_SingletonC$SingletonCImpl$SwitchingProvider.get(DaggerWakeUpApplication_HiltComponents_SingletonC.java:1054)
+04-02 23:17:45.209 25796 25796 E AndroidRuntime:        at com.wakeup.app.DaggerWakeUpApplication_HiltComponents_SingletonC$SingletonCImpl$SwitchingProvider.get(DaggerWakeUpApplication_HiltComponents_SingletonC.java:1066)
+04-02 23:17:45.209 25796 25796 E AndroidRuntime:        at com.wakeup.app.DaggerWakeUpApplication_HiltComponents_SingletonC$SingletonCImpl$SwitchingProvider.get(DaggerWakeUpApplication_HiltComponents_SingletonC.java:1063)
+04-02 23:17:45.209 25796 25796 E AndroidRuntime:        at com.wakeup.app.DaggerWakeUpApplication_HiltComponents_SingletonC$ViewModelCImpl.getAllAlarmsUseCase(DaggerWakeUpApplication_HiltComponents_SingletonC.java:563)
+04-02 23:17:45.209 25796 25796 E AndroidRuntime:        at com.wakeup.app.DaggerWakeUpApplication_HiltComponents_SingletonC$ViewModelCImpl.-$$Nest$mgetAllAlarmsUseCase(Unknown Source:0)
+04-02 23:17:45.209 25796 25796 E AndroidRuntime:        at com.wakeup.app.DaggerWakeUpApplication_HiltComponents_SingletonC$ViewModelCImpl$SwitchingProvider.get(DaggerWakeUpApplication_HiltComponents_SingletonC.java:686)
+04-02 23:17:45.210 25796 25796 E AndroidRuntime:        at com.wakeup.app.presentation.home.HomeScreenKt.HomeScreen(HomeScreen.kt:519)
+04-02 23:17:45.210 25796 25796 E AndroidRuntime:        at com.wakeup.app.presentation.navigation.MainScreenKt$MainScreen$3$1$1.invoke(MainScreen.kt:116)
+04-02 23:17:45.210 25796 25796 E AndroidRuntime:        at com.wakeup.app.presentation.navigation.MainScreenKt$MainScreen$3$1$1.invoke(MainScreen.kt:115)
+04-02 23:17:45.210 25796 25796 E AndroidRuntime:        at com.wakeup.app.presentation.navigation.MainScreenKt$MainScreen$3.invoke(MainScreen.kt:108)
+04-02 23:17:45.210 25796 25796 E AndroidRuntime:        at com.wakeup.app.presentation.navigation.MainScreenKt$MainScreen$3.invoke(MainScreen.kt:107)
+04-02 23:17:48.587 27053 27053 I com.wakeup.app: Late-enabling -Xcheck:jni
+04-02 23:17:48.641 27053 27053 I com.wakeup.app: Using CollectorTypeCC GC.
+04-02 23:17:48.802 27053 27053 E com.wakeup.app: BBinder_init Processname  <pre-initialized>
+04-02 23:17:48.960 27053 27816 W com.wakeup.app: Loading /data/misc/apexdata/com.android.art/dalvik-cache/arm64/system@framework@com.android.location.provider.jar@classes.odex non-executable as it requires an image which we failed to load
+04-02 23:17:48.984 27053 27053 E com.wakeup.app: BBinder_init Processname  com.wakeup.app
+04-02 23:17:48.984 27053 27053 E com.wakeup.app: BBinder_init hasGetProcessName  com.wakeup.app
+04-02 23:17:48.989 27053 27816 W com.wakeup.app: Loading /data/app/~~k1o8EBgMnE6f8SA8wwU5_w==/com.google.android.gms-73194QPBTfABETVN1NvKbg==/oat/arm64/base.odex non-executable as it requires an image which we failed to load
+04-02 23:17:49.230 27053 27819 W com.wakeup.app: ClassLoaderContext classpath size mismatch. expected=1, found=0 (DLC[];PCL[base.apk*3532740154]{PCL[/system/framework/org.apache.http.legacy.jar*1230680128]#PCL[/system/framework/com.android.location.provider.jar*3414091812]#PCL[/system/framework/com.android.media.remotedisplay.jar*2042759013]#PCL[/system_ext/framework/androidx.window.extensions.jar*3366631065]#PCL[/system_ext/framework/androidx.window.sidecar.jar*1666522852]} | DLC[];PCL[])
+04-02 23:17:49.413 27053 27053 W com.wakeup.app: Method boolean androidx.compose.runtime.snapshots.SnapshotStateList.conditionalUpdate(boolean, kotlin.jvm.functions.Function1) failed lock verification and will run slower.
+04-02 23:17:49.413 27053 27053 W com.wakeup.app: Common causes for lock verification issues are non-optimized dex code
+04-02 23:17:49.413 27053 27053 W com.wakeup.app: and incorrect proguard optimizations.
+04-02 23:17:49.414 27053 27053 W com.wakeup.app: Method boolean androidx.compose.runtime.snapshots.SnapshotStateList.conditionalUpdate$default(androidx.compose.runtime.snapshots.SnapshotStateList, boolean, kotlin.jvm.functions.Function1, int, java.lang.Object) failed lock verification and will run slower.
+04-02 23:17:49.414 27053 27053 W com.wakeup.app: Method java.lang.Object androidx.compose.runtime.snapshots.SnapshotStateList.mutate(kotlin.jvm.functions.Function1) failed lock verification and will run slower.
+04-02 23:17:49.414 27053 27053 W com.wakeup.app: Method void androidx.compose.runtime.snapshots.SnapshotStateList.update(boolean, kotlin.jvm.functions.Function1) failed lock verification and will run slower.
+04-02 23:17:49.414 27053 27053 W com.wakeup.app: Method void androidx.compose.runtime.snapshots.SnapshotStateList.update$default(androidx.compose.runtime.snapshots.SnapshotStateList, boolean, kotlin.jvm.functions.Function1, int, java.lang.Object) failed lock verification and will run slower.
+04-02 23:17:49.696  1767  1806 I ActivityTaskManager: Displayed com.wakeup.app/.MainActivity for user 0: +1s116ms
+04-02 23:17:51.100 27053 27053 W com.wakeup.app: Loading /data/app/~~hlUObMT1sAByG_pdrLa6jg==/com.google.android.webview-9Dvk1K1EIy8ZavY9u02LCw==/oat/arm64/base.odex non-executable as it requires an image which we failed to load
+04-02 23:17:51.893 27053 27858 I AudioManager: In isSpeakerphoneOn(), calling application: com.wakeup.app
+04-02 23:17:52.050 27053 27053 E AndroidRuntime: Process: com.wakeup.app, PID: 27053
+04-02 23:17:52.050 27053 27053 E AndroidRuntime:        at com.wakeup.app.data.di.DataModule.provideDatabasePassphrase(DataModule.kt:95)
+04-02 23:17:52.050 27053 27053 E AndroidRuntime:        at com.wakeup.app.data.di.DataModule_ProvideDatabasePassphraseFactory.provideDatabasePassphrase(DataModule_ProvideDatabasePassphraseFactory.java:46)
+04-02 23:17:52.050 27053 27053 E AndroidRuntime:        at com.wakeup.app.DaggerWakeUpApplication_HiltComponents_SingletonC$SingletonCImpl$SwitchingProvider.get(DaggerWakeUpApplication_HiltComponents_SingletonC.java:1060)
+04-02 23:17:52.050 27053 27053 E AndroidRuntime:        at com.wakeup.app.DaggerWakeUpApplication_HiltComponents_SingletonC$SingletonCImpl$SwitchingProvider.get(DaggerWakeUpApplication_HiltComponents_SingletonC.java:1057)
+04-02 23:17:52.050 27053 27053 E AndroidRuntime:        at com.wakeup.app.DaggerWakeUpApplication_HiltComponents_SingletonC$SingletonCImpl$SwitchingProvider.get(DaggerWakeUpApplication_HiltComponents_SingletonC.java:1054)
+04-02 23:17:52.050 27053 27053 E AndroidRuntime:        at com.wakeup.app.DaggerWakeUpApplication_HiltComponents_SingletonC$SingletonCImpl$SwitchingProvider.get(DaggerWakeUpApplication_HiltComponents_SingletonC.java:1066)
+04-02 23:17:52.050 27053 27053 E AndroidRuntime:        at com.wakeup.app.DaggerWakeUpApplication_HiltComponents_SingletonC$SingletonCImpl$SwitchingProvider.get(DaggerWakeUpApplication_HiltComponents_SingletonC.java:1063)
+04-02 23:17:52.050 27053 27053 E AndroidRuntime:        at com.wakeup.app.DaggerWakeUpApplication_HiltComponents_SingletonC$ViewModelCImpl.getAllAlarmsUseCase(DaggerWakeUpApplication_HiltComponents_SingletonC.java:563)
+04-02 23:17:52.050 27053 27053 E AndroidRuntime:        at com.wakeup.app.DaggerWakeUpApplication_HiltComponents_SingletonC$ViewModelCImpl.-$$Nest$mgetAllAlarmsUseCase(Unknown Source:0)
+04-02 23:17:52.050 27053 27053 E AndroidRuntime:        at com.wakeup.app.DaggerWakeUpApplication_HiltComponents_SingletonC$ViewModelCImpl$SwitchingProvider.get(DaggerWakeUpApplication_HiltComponents_SingletonC.java:686)
+04-02 23:17:52.054 27053 27053 E AndroidRuntime:        at com.wakeup.app.presentation.home.HomeScreenKt.HomeScreen(HomeScreen.kt:519)
+04-02 23:17:52.054 27053 27053 E AndroidRuntime:        at com.wakeup.app.presentation.navigation.MainScreenKt$MainScreen$3$1$1.invoke(MainScreen.kt:116)
+04-02 23:17:52.054 27053 27053 E AndroidRuntime:        at com.wakeup.app.presentation.navigation.MainScreenKt$MainScreen$3$1$1.invoke(MainScreen.kt:115)
+04-02 23:17:52.054 27053 27053 E AndroidRuntime:        at com.wakeup.app.presentation.navigation.MainScreenKt$MainScreen$3.invoke(MainScreen.kt:108)
+04-02 23:17:52.054 27053 27053 E AndroidRuntime:        at com.wakeup.app.presentation.navigation.MainScreenKt$MainScreen$3.invoke(MainScreen.kt:107)
+04-02 23:17:54.594 27577 27577 I com.wakeup.app: Late-enabling -Xcheck:jni
+04-02 23:17:54.673 27577 27577 I com.wakeup.app: Using CollectorTypeCC GC.
+04-02 23:17:54.776 27577 27577 E com.wakeup.app: BBinder_init Processname  <pre-initialized>
+04-02 23:17:54.939 27577 27577 E com.wakeup.app: BBinder_init Processname  com.wakeup.app
+04-02 23:17:54.939 27577 27577 E com.wakeup.app: BBinder_init hasGetProcessName  com.wakeup.app
+04-02 23:17:54.975 27577 28017 W com.wakeup.app: Loading /data/misc/apexdata/com.android.art/dalvik-cache/arm64/system@framework@com.android.location.provider.jar@classes.odex non-executable as it requires an image which we failed to load
+04-02 23:17:55.094 27577 28017 W com.wakeup.app: Loading /data/app/~~k1o8EBgMnE6f8SA8wwU5_w==/com.google.android.gms-73194QPBTfABETVN1NvKbg==/oat/arm64/base.odex non-executable as it requires an image which we failed to load
+04-02 23:17:55.271 27577 28021 W com.wakeup.app: ClassLoaderContext classpath size mismatch. expected=1, found=0 (DLC[];PCL[base.apk*3532740154]{PCL[/system/framework/org.apache.http.legacy.jar*1230680128]#PCL[/system/framework/com.android.location.provider.jar*3414091812]#PCL[/system/framework/com.android.media.remotedisplay.jar*2042759013]#PCL[/system_ext/framework/androidx.window.extensions.jar*3366631065]#PCL[/system_ext/framework/androidx.window.sidecar.jar*1666522852]} | DLC[];PCL[])
+04-02 23:17:55.393 27577 27577 W com.wakeup.app: Method boolean androidx.compose.runtime.snapshots.SnapshotStateList.conditionalUpdate(boolean, kotlin.jvm.functions.Function1) failed lock verification and will run slower.
+04-02 23:17:55.393 27577 27577 W com.wakeup.app: Common causes for lock verification issues are non-optimized dex code
+04-02 23:17:55.393 27577 27577 W com.wakeup.app: and incorrect proguard optimizations.
+04-02 23:17:55.394 27577 27577 W com.wakeup.app: Method boolean androidx.compose.runtime.snapshots.SnapshotStateList.conditionalUpdate$default(androidx.compose.runtime.snapshots.SnapshotStateList, boolean, kotlin.jvm.functions.Function1, int, java.lang.Object) failed lock verification and will run slower.
+04-02 23:17:55.394 27577 27577 W com.wakeup.app: Method java.lang.Object androidx.compose.runtime.snapshots.SnapshotStateList.mutate(kotlin.jvm.functions.Function1) failed lock verification and will run slower.
+04-02 23:17:55.394 27577 27577 W com.wakeup.app: Method void androidx.compose.runtime.snapshots.SnapshotStateList.update(boolean, kotlin.jvm.functions.Function1) failed lock verification and will run slower.
+04-02 23:17:55.394 27577 27577 W com.wakeup.app: Method void androidx.compose.runtime.snapshots.SnapshotStateList.update$default(androidx.compose.runtime.snapshots.SnapshotStateList, boolean, kotlin.jvm.functions.Function1, int, java.lang.Object) failed lock verification and will run slower.
+04-02 23:17:55.681  1767  1806 I ActivityTaskManager: Displayed com.wakeup.app/.MainActivity for user 0: +1s169ms
+04-02 23:17:57.049 27577 27577 W com.wakeup.app: Loading /data/app/~~hlUObMT1sAByG_pdrLa6jg==/com.google.android.webview-9Dvk1K1EIy8ZavY9u02LCw==/oat/arm64/base.odex non-executable as it requires an image which we failed to load
+04-02 23:17:57.823 27577 28067 I AudioManager: In isSpeakerphoneOn(), calling application: com.wakeup.app
+04-02 23:17:57.984 27577 27577 E AndroidRuntime: Process: com.wakeup.app, PID: 27577
+04-02 23:17:57.984 27577 27577 E AndroidRuntime:        at com.wakeup.app.data.di.DataModule.provideDatabasePassphrase(DataModule.kt:95)
+04-02 23:17:57.984 27577 27577 E AndroidRuntime:        at com.wakeup.app.data.di.DataModule_ProvideDatabasePassphraseFactory.provideDatabasePassphrase(DataModule_ProvideDatabasePassphraseFactory.java:46)
+04-02 23:17:57.984 27577 27577 E AndroidRuntime:        at com.wakeup.app.DaggerWakeUpApplication_HiltComponents_SingletonC$SingletonCImpl$SwitchingProvider.get(DaggerWakeUpApplication_HiltComponents_SingletonC.java:1060)
+04-02 23:17:57.984 27577 27577 E AndroidRuntime:        at com.wakeup.app.DaggerWakeUpApplication_HiltComponents_SingletonC$SingletonCImpl$SwitchingProvider.get(DaggerWakeUpApplication_HiltComponents_SingletonC.java:1057)
+04-02 23:17:57.984 27577 27577 E AndroidRuntime:        at com.wakeup.app.DaggerWakeUpApplication_HiltComponents_SingletonC$SingletonCImpl$SwitchingProvider.get(DaggerWakeUpApplication_HiltComponents_SingletonC.java:1054)
+04-02 23:17:57.984 27577 27577 E AndroidRuntime:        at com.wakeup.app.DaggerWakeUpApplication_HiltComponents_SingletonC$SingletonCImpl$SwitchingProvider.get(DaggerWakeUpApplication_HiltComponents_SingletonC.java:1066)
+04-02 23:17:57.984 27577 27577 E AndroidRuntime:        at com.wakeup.app.DaggerWakeUpApplication_HiltComponents_SingletonC$SingletonCImpl$SwitchingProvider.get(DaggerWakeUpApplication_HiltComponents_SingletonC.java:1063)
+04-02 23:17:57.984 27577 27577 E AndroidRuntime:        at com.wakeup.app.DaggerWakeUpApplication_HiltComponents_SingletonC$ViewModelCImpl.getAllAlarmsUseCase(DaggerWakeUpApplication_HiltComponents_SingletonC.java:563)
+04-02 23:17:57.984 27577 27577 E AndroidRuntime:        at com.wakeup.app.DaggerWakeUpApplication_HiltComponents_SingletonC$ViewModelCImpl.-$$Nest$mgetAllAlarmsUseCase(Unknown Source:0)
+04-02 23:17:57.984 27577 27577 E AndroidRuntime:        at com.wakeup.app.DaggerWakeUpApplication_HiltComponents_SingletonC$ViewModelCImpl$SwitchingProvider.get(DaggerWakeUpApplication_HiltComponents_SingletonC.java:686)
+04-02 23:17:57.987 27577 27577 E AndroidRuntime:        at com.wakeup.app.presentation.home.HomeScreenKt.HomeScreen(HomeScreen.kt:519)
+04-02 23:17:57.987 27577 27577 E AndroidRuntime:        at com.wakeup.app.presentation.navigation.MainScreenKt$MainScreen$3$1$1.invoke(MainScreen.kt:116)
+04-02 23:17:57.987 27577 27577 E AndroidRuntime:        at com.wakeup.app.presentation.navigation.MainScreenKt$MainScreen$3$1$1.invoke(MainScreen.kt:115)
+04-02 23:17:57.987 27577 27577 E AndroidRuntime:        at com.wakeup.app.presentation.navigation.MainScreenKt$MainScreen$3.invoke(MainScreen.kt:108)
+04-02 23:17:57.987 27577 27577 E AndroidRuntime:        at com.wakeup.app.presentation.navigation.MainScreenKt$MainScreen$3.invoke(MainScreen.kt:107)
+04-02 23:17:58.089 27577 28005 I com.wakeup.app: Compiler allocated 7999KB to compile void android.view.ViewRootImpl.performTraversals()
+04-02 23:20:20.105 27923 27923 I com.wakeup.app: Late-enabling -Xcheck:jni
+04-02 23:20:20.156 27923 27923 I com.wakeup.app: Using CollectorTypeCC GC.
+04-02 23:20:20.301 27923 27923 E com.wakeup.app: BBinder_init Processname  <pre-initialized>
+04-02 23:20:20.455 27923 28348 W com.wakeup.app: Loading /data/misc/apexdata/com.android.art/dalvik-cache/arm64/system@framework@com.android.location.provider.jar@classes.odex non-executable as it requires an image which we failed to load
+04-02 23:20:20.466 27923 27923 E com.wakeup.app: BBinder_init Processname  com.wakeup.app
+04-02 23:20:20.466 27923 27923 E com.wakeup.app: BBinder_init hasGetProcessName  com.wakeup.app
+04-02 23:20:20.542 27923 28348 W com.wakeup.app: Loading /data/app/~~k1o8EBgMnE6f8SA8wwU5_w==/com.google.android.gms-73194QPBTfABETVN1NvKbg==/oat/arm64/base.odex non-executable as it requires an image which we failed to load
+04-02 23:20:20.605 27923 28351 W com.wakeup.app: ClassLoaderContext classpath size mismatch. expected=1, found=0 (DLC[];PCL[base.apk*3532740154]{PCL[/system/framework/org.apache.http.legacy.jar*1230680128]#PCL[/system/framework/com.android.location.provider.jar*3414091812]#PCL[/system/framework/com.android.media.remotedisplay.jar*2042759013]#PCL[/system_ext/framework/androidx.window.extensions.jar*3366631065]#PCL[/system_ext/framework/androidx.window.sidecar.jar*1666522852]} | DLC[];PCL[])
+04-02 23:20:20.899 27923 27923 W com.wakeup.app: Method boolean androidx.compose.runtime.snapshots.SnapshotStateList.conditionalUpdate(boolean, kotlin.jvm.functions.Function1) failed lock verification and will run slower.
+04-02 23:20:20.899 27923 27923 W com.wakeup.app: Common causes for lock verification issues are non-optimized dex code
+04-02 23:20:20.899 27923 27923 W com.wakeup.app: and incorrect proguard optimizations.
+04-02 23:20:20.899 27923 27923 W com.wakeup.app: Method boolean androidx.compose.runtime.snapshots.SnapshotStateList.conditionalUpdate$default(androidx.compose.runtime.snapshots.SnapshotStateList, boolean, kotlin.jvm.functions.Function1, int, java.lang.Object) failed lock verification and will run slower.
+04-02 23:20:20.900 27923 27923 W com.wakeup.app: Method java.lang.Object androidx.compose.runtime.snapshots.SnapshotStateList.mutate(kotlin.jvm.functions.Function1) failed lock verification and will run slower.
+04-02 23:20:20.900 27923 27923 W com.wakeup.app: Method void androidx.compose.runtime.snapshots.SnapshotStateList.update(boolean, kotlin.jvm.functions.Function1) failed lock verification and will run slower.
+04-02 23:20:20.900 27923 27923 W com.wakeup.app: Method void androidx.compose.runtime.snapshots.SnapshotStateList.update$default(androidx.compose.runtime.snapshots.SnapshotStateList, boolean, kotlin.jvm.functions.Function1, int, java.lang.Object) failed lock verification and will run slower.
+04-02 23:20:21.229  1767  1806 I ActivityTaskManager: Displayed com.wakeup.app/.MainActivity for user 0: +1s133ms
+04-02 23:20:22.730 27923 27923 W com.wakeup.app: Loading /data/app/~~hlUObMT1sAByG_pdrLa6jg==/com.google.android.webview-9Dvk1K1EIy8ZavY9u02LCw==/oat/arm64/base.odex non-executable as it requires an image which we failed to load
+04-02 23:20:23.459 27923 28394 I AudioManager: In isSpeakerphoneOn(), calling application: com.wakeup.app
+04-02 23:20:23.592 27923 28333 I com.wakeup.app: Compiler allocated 7999KB to compile void android.view.ViewRootImpl.performTraversals()
+04-02 23:20:23.607 27923 27923 E AndroidRuntime: Process: com.wakeup.app, PID: 27923
+04-02 23:20:23.607 27923 27923 E AndroidRuntime:        at com.wakeup.app.data.di.DataModule.provideDatabasePassphrase(DataModule.kt:95)
+04-02 23:20:23.607 27923 27923 E AndroidRuntime:        at com.wakeup.app.data.di.DataModule_ProvideDatabasePassphraseFactory.provideDatabasePassphrase(DataModule_ProvideDatabasePassphraseFactory.java:46)
+04-02 23:20:23.607 27923 27923 E AndroidRuntime:        at com.wakeup.app.DaggerWakeUpApplication_HiltComponents_SingletonC$SingletonCImpl$SwitchingProvider.get(DaggerWakeUpApplication_HiltComponents_SingletonC.java:1060)
+04-02 23:20:23.607 27923 27923 E AndroidRuntime:        at com.wakeup.app.DaggerWakeUpApplication_HiltComponents_SingletonC$SingletonCImpl$SwitchingProvider.get(DaggerWakeUpApplication_HiltComponents_SingletonC.java:1057)
+04-02 23:20:23.607 27923 27923 E AndroidRuntime:        at com.wakeup.app.DaggerWakeUpApplication_HiltComponents_SingletonC$SingletonCImpl$SwitchingProvider.get(DaggerWakeUpApplication_HiltComponents_SingletonC.java:1054)
+04-02 23:20:23.607 27923 27923 E AndroidRuntime:        at com.wakeup.app.DaggerWakeUpApplication_HiltComponents_SingletonC$SingletonCImpl$SwitchingProvider.get(DaggerWakeUpApplication_HiltComponents_SingletonC.java:1066)
+04-02 23:20:23.607 27923 27923 E AndroidRuntime:        at com.wakeup.app.DaggerWakeUpApplication_HiltComponents_SingletonC$SingletonCImpl$SwitchingProvider.get(DaggerWakeUpApplication_HiltComponents_SingletonC.java:1063)
+04-02 23:20:23.607 27923 27923 E AndroidRuntime:        at com.wakeup.app.DaggerWakeUpApplication_HiltComponents_SingletonC$ViewModelCImpl.getAllAlarmsUseCase(DaggerWakeUpApplication_HiltComponents_SingletonC.java:563)
+04-02 23:20:23.607 27923 27923 E AndroidRuntime:        at com.wakeup.app.DaggerWakeUpApplication_HiltComponents_SingletonC$ViewModelCImpl.-$$Nest$mgetAllAlarmsUseCase(Unknown Source:0)
+04-02 23:20:23.607 27923 27923 E AndroidRuntime:        at com.wakeup.app.DaggerWakeUpApplication_HiltComponents_SingletonC$ViewModelCImpl$SwitchingProvider.get(DaggerWakeUpApplication_HiltComponents_SingletonC.java:686)
+04-02 23:20:23.611 27923 27923 E AndroidRuntime:        at com.wakeup.app.presentation.home.HomeScreenKt.HomeScreen(HomeScreen.kt:519)
+04-02 23:20:23.611 27923 27923 E AndroidRuntime:        at com.wakeup.app.presentation.navigation.MainScreenKt$MainScreen$3$1$1.invoke(MainScreen.kt:116)
+04-02 23:20:23.611 27923 27923 E AndroidRuntime:        at com.wakeup.app.presentation.navigation.MainScreenKt$MainScreen$3$1$1.invoke(MainScreen.kt:115)
+04-02 23:20:23.611 27923 27923 E AndroidRuntime:        at com.wakeup.app.presentation.navigation.MainScreenKt$MainScreen$3.invoke(MainScreen.kt:108)
+04-02 23:20:23.611 27923 27923 E AndroidRuntime:        at com.wakeup.app.presentation.navigation.MainScreenKt$MainScreen$3.invoke(MainScreen.kt:107)
+04-02 23:21:30.111 28122 28122 I com.wakeup.app: Late-enabling -Xcheck:jni
+04-02 23:21:30.189 28122 28122 I com.wakeup.app: Using CollectorTypeCC GC.
+04-02 23:21:30.290 28122 28122 E com.wakeup.app: BBinder_init Processname  <pre-initialized>
+04-02 23:21:30.444 28122 28646 E com.wakeup.app: BBinder_init Processname  com.wakeup.app
+04-02 23:21:30.444 28122 28646 E com.wakeup.app: BBinder_init hasGetProcessName  com.wakeup.app
+04-02 23:21:30.451 28122 28645 W com.wakeup.app: Loading /data/misc/apexdata/com.android.art/dalvik-cache/arm64/system@framework@com.android.location.provider.jar@classes.odex non-executable as it requires an image which we failed to load
+04-02 23:21:30.498 28122 28645 W com.wakeup.app: Loading /data/app/~~k1o8EBgMnE6f8SA8wwU5_w==/com.google.android.gms-73194QPBTfABETVN1NvKbg==/oat/arm64/base.odex non-executable as it requires an image which we failed to load
+04-02 23:21:30.613 28122 28649 W com.wakeup.app: ClassLoaderContext classpath size mismatch. expected=1, found=0 (DLC[];PCL[base.apk*3532740154]{PCL[/system/framework/org.apache.http.legacy.jar*1230680128]#PCL[/system/framework/com.android.location.provider.jar*3414091812]#PCL[/system/framework/com.android.media.remotedisplay.jar*2042759013]#PCL[/system_ext/framework/androidx.window.extensions.jar*3366631065]#PCL[/system_ext/framework/androidx.window.sidecar.jar*1666522852]} | DLC[];PCL[])
+04-02 23:21:30.863 28122 28122 W com.wakeup.app: Method boolean androidx.compose.runtime.snapshots.SnapshotStateList.conditionalUpdate(boolean, kotlin.jvm.functions.Function1) failed lock verification and will run slower.
+04-02 23:21:30.863 28122 28122 W com.wakeup.app: Common causes for lock verification issues are non-optimized dex code
+04-02 23:21:30.863 28122 28122 W com.wakeup.app: and incorrect proguard optimizations.
+04-02 23:21:30.863 28122 28122 W com.wakeup.app: Method boolean androidx.compose.runtime.snapshots.SnapshotStateList.conditionalUpdate$default(androidx.compose.runtime.snapshots.SnapshotStateList, boolean, kotlin.jvm.functions.Function1, int, java.lang.Object) failed lock verification and will run slower.
+04-02 23:21:30.864 28122 28122 W com.wakeup.app: Method java.lang.Object androidx.compose.runtime.snapshots.SnapshotStateList.mutate(kotlin.jvm.functions.Function1) failed lock verification and will run slower.
+04-02 23:21:30.864 28122 28122 W com.wakeup.app: Method void androidx.compose.runtime.snapshots.SnapshotStateList.update(boolean, kotlin.jvm.functions.Function1) failed lock verification and will run slower.
+04-02 23:21:30.864 28122 28122 W com.wakeup.app: Method void androidx.compose.runtime.snapshots.SnapshotStateList.update$default(androidx.compose.runtime.snapshots.SnapshotStateList, boolean, kotlin.jvm.functions.Function1, int, java.lang.Object) failed lock verification and will run slower.
+04-02 23:21:31.123  1767  1806 I ActivityTaskManager: Displayed com.wakeup.app/.MainActivity for user 0: +1s94ms
+04-02 23:21:32.517 28122 28122 W com.wakeup.app: Loading /data/app/~~hlUObMT1sAByG_pdrLa6jg==/com.google.android.webview-9Dvk1K1EIy8ZavY9u02LCw==/oat/arm64/base.odex non-executable as it requires an image which we failed to load
+04-02 23:21:33.194 28122 28705 I AudioManager: In isSpeakerphoneOn(), calling application: com.wakeup.app
+04-02 23:21:33.338 28122 28122 E AndroidRuntime: Process: com.wakeup.app, PID: 28122
+04-02 23:21:33.338 28122 28122 E AndroidRuntime:        at com.wakeup.app.data.di.DataModule.provideDatabasePassphrase(DataModule.kt:95)
+04-02 23:21:33.338 28122 28122 E AndroidRuntime:        at com.wakeup.app.data.di.DataModule_ProvideDatabasePassphraseFactory.provideDatabasePassphrase(DataModule_ProvideDatabasePassphraseFactory.java:46)
+04-02 23:21:33.338 28122 28122 E AndroidRuntime:        at com.wakeup.app.DaggerWakeUpApplication_HiltComponents_SingletonC$SingletonCImpl$SwitchingProvider.get(DaggerWakeUpApplication_HiltComponents_SingletonC.java:1060)
+04-02 23:21:33.338 28122 28122 E AndroidRuntime:        at com.wakeup.app.DaggerWakeUpApplication_HiltComponents_SingletonC$SingletonCImpl$SwitchingProvider.get(DaggerWakeUpApplication_HiltComponents_SingletonC.java:1057)
+04-02 23:21:33.338 28122 28122 E AndroidRuntime:        at com.wakeup.app.DaggerWakeUpApplication_HiltComponents_SingletonC$SingletonCImpl$SwitchingProvider.get(DaggerWakeUpApplication_HiltComponents_SingletonC.java:1054)
+04-02 23:21:33.338 28122 28122 E AndroidRuntime:        at com.wakeup.app.DaggerWakeUpApplication_HiltComponents_SingletonC$SingletonCImpl$SwitchingProvider.get(DaggerWakeUpApplication_HiltComponents_SingletonC.java:1066)
+04-02 23:21:33.338 28122 28122 E AndroidRuntime:        at com.wakeup.app.DaggerWakeUpApplication_HiltComponents_SingletonC$SingletonCImpl$SwitchingProvider.get(DaggerWakeUpApplication_HiltComponents_SingletonC.java:1063)
+04-02 23:21:33.338 28122 28122 E AndroidRuntime:        at com.wakeup.app.DaggerWakeUpApplication_HiltComponents_SingletonC$ViewModelCImpl.getAllAlarmsUseCase(DaggerWakeUpApplication_HiltComponents_SingletonC.java:563)
+04-02 23:21:33.338 28122 28122 E AndroidRuntime:        at com.wakeup.app.DaggerWakeUpApplication_HiltComponents_SingletonC$ViewModelCImpl.-$$Nest$mgetAllAlarmsUseCase(Unknown Source:0)
+04-02 23:21:33.338 28122 28122 E AndroidRuntime:        at com.wakeup.app.DaggerWakeUpApplication_HiltComponents_SingletonC$ViewModelCImpl$SwitchingProvider.get(DaggerWakeUpApplication_HiltComponents_SingletonC.java:686)
+04-02 23:21:33.344 28122 28122 E AndroidRuntime:        at com.wakeup.app.presentation.home.HomeScreenKt.HomeScreen(HomeScreen.kt:519)
+04-02 23:21:33.344 28122 28122 E AndroidRuntime:        at com.wakeup.app.presentation.navigation.MainScreenKt$MainScreen$3$1$1.invoke(MainScreen.kt:116)
+04-02 23:21:33.344 28122 28122 E AndroidRuntime:        at com.wakeup.app.presentation.navigation.MainScreenKt$MainScreen$3$1$1.invoke(MainScreen.kt:115)
+04-02 23:21:33.344 28122 28122 E AndroidRuntime:        at com.wakeup.app.presentation.navigation.MainScreenKt$MainScreen$3.invoke(MainScreen.kt:108)
+04-02 23:21:33.344 28122 28122 E AndroidRuntime:        at com.wakeup.app.presentation.navigation.MainScreenKt$MainScreen$3.invoke(MainScreen.kt:107)
+04-02 23:21:33.385 28122 28629 I com.wakeup.app: Compiler allocated 7999KB to compile void android.view.ViewRootImpl.performTraversals()
+04-02 23:22:43.041 28472 28472 I com.wakeup.app: Late-enabling -Xcheck:jni
+04-02 23:22:43.121 28472 28472 I com.wakeup.app: Using CollectorTypeCC GC.
+04-02 23:22:43.239 28472 28472 E com.wakeup.app: BBinder_init Processname  <pre-initialized>
+04-02 23:22:43.681 28472 28472 D nativeloader: Configuring clns-7 for other apk /data/app/~~7l3MnHxnUn7SjX271OOkqg==/com.wakeup.app-ML_uYg6LuBtT-W5X3I9tQQ==/base.apk. target_sdk_version=35, uses_libraries=, library_path=/data/app/~~7l3MnHxnUn7SjX271OOkqg==/com.wakeup.app-ML_uYg6LuBtT-W5X3I9tQQ==/lib/arm64:/data/app/~~7l3MnHxnUn7SjX271OOkqg==/com.wakeup.app-ML_uYg6LuBtT-W5X3I9tQQ==/base.apk!/lib/arm64-v8a, permitted_path=/data:/mnt/expand:/data/user/0/com.wakeup.app
+04-02 23:22:43.726 28472 28472 V GraphicsEnvironment: com.wakeup.app is not listed in per-application setting
+04-02 23:22:43.777 28472 29361 W com.wakeup.app: Loading /data/misc/apexdata/com.android.art/dalvik-cache/arm64/system@framework@com.android.location.provider.jar@classes.odex non-executable as it requires an image which we failed to load
+04-02 23:22:43.791 28472 28472 E com.wakeup.app: BBinder_init Processname  com.wakeup.app
+04-02 23:22:43.791 28472 28472 E com.wakeup.app: BBinder_init hasGetProcessName  com.wakeup.app
+04-02 23:22:43.794 28472 29361 W com.wakeup.app: Loading /data/app/~~k1o8EBgMnE6f8SA8wwU5_w==/com.google.android.gms-73194QPBTfABETVN1NvKbg==/oat/arm64/base.odex non-executable as it requires an image which we failed to load
+04-02 23:22:43.904 28472 29364 W com.wakeup.app: ClassLoaderContext classpath size mismatch. expected=1, found=0 (DLC[];PCL[base.apk*3532740154]{PCL[/system/framework/org.apache.http.legacy.jar*1230680128]#PCL[/system/framework/com.android.location.provider.jar*3414091812]#PCL[/system/framework/com.android.media.remotedisplay.jar*2042759013]#PCL[/system_ext/framework/androidx.window.extensions.jar*3366631065]#PCL[/system_ext/framework/androidx.window.sidecar.jar*1666522852]} | DLC[];PCL[])
+04-02 23:22:44.165 28472 28472 W com.wakeup.app: Method boolean androidx.compose.runtime.snapshots.SnapshotStateList.conditionalUpdate(boolean, kotlin.jvm.functions.Function1) failed lock verification and will run slower.
+04-02 23:22:44.165 28472 28472 W com.wakeup.app: Common causes for lock verification issues are non-optimized dex code
+04-02 23:22:44.165 28472 28472 W com.wakeup.app: and incorrect proguard optimizations.
+04-02 23:22:44.165 28472 28472 W com.wakeup.app: Method boolean androidx.compose.runtime.snapshots.SnapshotStateList.conditionalUpdate$default(androidx.compose.runtime.snapshots.SnapshotStateList, boolean, kotlin.jvm.functions.Function1, int, java.lang.Object) failed lock verification and will run slower.
+04-02 23:22:44.166 28472 28472 W com.wakeup.app: Method java.lang.Object androidx.compose.runtime.snapshots.SnapshotStateList.mutate(kotlin.jvm.functions.Function1) failed lock verification and will run slower.
+04-02 23:22:44.166 28472 28472 W com.wakeup.app: Method void androidx.compose.runtime.snapshots.SnapshotStateList.update(boolean, kotlin.jvm.functions.Function1) failed lock verification and will run slower.
+04-02 23:22:44.166 28472 28472 W com.wakeup.app: Method void androidx.compose.runtime.snapshots.SnapshotStateList.update$default(androidx.compose.runtime.snapshots.SnapshotStateList, boolean, kotlin.jvm.functions.Function1, int, java.lang.Object) failed lock verification and will run slower.
+04-02 23:22:44.448  1767  1806 I ActivityTaskManager: Displayed com.wakeup.app/.MainActivity for user 0: +1s459ms
+04-02 23:22:45.392 28472 28472 W com.wakeup.app: Loading /data/app/~~hlUObMT1sAByG_pdrLa6jg==/com.google.android.webview-9Dvk1K1EIy8ZavY9u02LCw==/oat/arm64/base.odex non-executable as it requires an image which we failed to load
+04-02 23:22:45.802 28472 29464 D com.wakeup.app: JNI_OnLoad: get JNI environment,JNI_VERSION_1_6
+04-02 23:22:45.820 28472 29464 D VivoJavaJsonManager: failed to find appName:com.wakeup.app from config key:mProtakePackages
+04-02 23:22:45.822 28472 29464 D VivoJavaJsonManager: failed to find appName:com.wakeup.app from config key:mProtakePackages
+04-02 23:22:45.824 28472 29467 D vulkan  : searching for layers in '/data/app/~~7l3MnHxnUn7SjX271OOkqg==/com.wakeup.app-ML_uYg6LuBtT-W5X3I9tQQ==/lib/arm64'
+04-02 23:22:45.824 28472 29467 D vulkan  : searching for layers in '/data/app/~~7l3MnHxnUn7SjX271OOkqg==/com.wakeup.app-ML_uYg6LuBtT-W5X3I9tQQ==/base.apk!/lib/arm64-v8a'
+04-02 23:22:45.825 28472 29467 D vulkan  : searching for layers in '/data/app/~~7l3MnHxnUn7SjX271OOkqg==/com.wakeup.app-ML_uYg6LuBtT-W5X3I9tQQ==/lib/arm64'
+04-02 23:22:45.825 28472 29467 D vulkan  : searching for layers in '/data/app/~~7l3MnHxnUn7SjX271OOkqg==/com.wakeup.app-ML_uYg6LuBtT-W5X3I9tQQ==/base.apk!/lib/arm64-v8a'
+04-02 23:22:45.827 28472 29354 D VivoJavaJsonManager: failed to find appName:com.wakeup.app from config key:mProtakePackages
+04-02 23:22:46.038 28472 29456 W MediaCodec-JNI: pid:28472,client name:com.wakeup.app
+04-02 23:22:46.349 28472 29417 I AudioManager: In isSpeakerphoneOn(), calling application: com.wakeup.app
+04-02 23:22:46.494 28472 29347 I com.wakeup.app: Compiler allocated 7999KB to compile void android.view.ViewRootImpl.performTraversals()
+04-02 23:22:46.538 28472 28472 E AndroidRuntime: Process: com.wakeup.app, PID: 28472
+04-02 23:22:46.538 28472 28472 E AndroidRuntime:        at com.wakeup.app.data.di.DataModule.provideDatabasePassphrase(DataModule.kt:95)
+04-02 23:22:46.538 28472 28472 E AndroidRuntime:        at com.wakeup.app.data.di.DataModule_ProvideDatabasePassphraseFactory.provideDatabasePassphrase(DataModule_ProvideDatabasePassphraseFactory.java:46)
+04-02 23:22:46.538 28472 28472 E AndroidRuntime:        at com.wakeup.app.DaggerWakeUpApplication_HiltComponents_SingletonC$SingletonCImpl$SwitchingProvider.get(DaggerWakeUpApplication_HiltComponents_SingletonC.java:1060)
+04-02 23:22:46.538 28472 28472 E AndroidRuntime:        at com.wakeup.app.DaggerWakeUpApplication_HiltComponents_SingletonC$SingletonCImpl$SwitchingProvider.get(DaggerWakeUpApplication_HiltComponents_SingletonC.java:1057)
+04-02 23:22:46.538 28472 28472 E AndroidRuntime:        at com.wakeup.app.DaggerWakeUpApplication_HiltComponents_SingletonC$SingletonCImpl$SwitchingProvider.get(DaggerWakeUpApplication_HiltComponents_SingletonC.java:1054)
+04-02 23:22:46.538 28472 28472 E AndroidRuntime:        at com.wakeup.app.DaggerWakeUpApplication_HiltComponents_SingletonC$SingletonCImpl$SwitchingProvider.get(DaggerWakeUpApplication_HiltComponents_SingletonC.java:1066)
+04-02 23:22:46.538 28472 28472 E AndroidRuntime:        at com.wakeup.app.DaggerWakeUpApplication_HiltComponents_SingletonC$SingletonCImpl$SwitchingProvider.get(DaggerWakeUpApplication_HiltComponents_SingletonC.java:1063)
+04-02 23:22:46.538 28472 28472 E AndroidRuntime:        at com.wakeup.app.DaggerWakeUpApplication_HiltComponents_SingletonC$ViewModelCImpl.getAllAlarmsUseCase(DaggerWakeUpApplication_HiltComponents_SingletonC.java:563)
+04-02 23:22:46.538 28472 28472 E AndroidRuntime:        at com.wakeup.app.DaggerWakeUpApplication_HiltComponents_SingletonC$ViewModelCImpl.-$$Nest$mgetAllAlarmsUseCase(Unknown Source:0)
+04-02 23:22:46.538 28472 28472 E AndroidRuntime:        at com.wakeup.app.DaggerWakeUpApplication_HiltComponents_SingletonC$ViewModelCImpl$SwitchingProvider.get(DaggerWakeUpApplication_HiltComponents_SingletonC.java:686)
+04-02 23:22:46.541 28472 28472 E AndroidRuntime:        at com.wakeup.app.presentation.home.HomeScreenKt.HomeScreen(HomeScreen.kt:519)
+04-02 23:22:46.541 28472 28472 E AndroidRuntime:        at com.wakeup.app.presentation.navigation.MainScreenKt$MainScreen$3$1$1.invoke(MainScreen.kt:116)
+04-02 23:22:46.541 28472 28472 E AndroidRuntime:        at com.wakeup.app.presentation.navigation.MainScreenKt$MainScreen$3$1$1.invoke(MainScreen.kt:115)
+04-02 23:22:46.541 28472 28472 E AndroidRuntime:        at com.wakeup.app.presentation.navigation.MainScreenKt$MainScreen$3.invoke(MainScreen.kt:108)
+04-02 23:22:46.541 28472 28472 E AndroidRuntime:        at com.wakeup.app.presentation.navigation.MainScreenKt$MainScreen$3.invoke(MainScreen.kt:107)
+04-02 23:22:48.066 28788 28788 I com.wakeup.app: Late-enabling -Xcheck:jni
+04-02 23:22:48.138 28788 28788 I com.wakeup.app: Using CollectorTypeCC GC.
+04-02 23:22:48.239 28788 28788 E com.wakeup.app: BBinder_init Processname  <pre-initialized>
+04-02 23:22:48.306 28788 28788 D nativeloader: Configuring clns-7 for other apk /data/app/~~7l3MnHxnUn7SjX271OOkqg==/com.wakeup.app-ML_uYg6LuBtT-W5X3I9tQQ==/base.apk. target_sdk_version=35, uses_libraries=, library_path=/data/app/~~7l3MnHxnUn7SjX271OOkqg==/com.wakeup.app-ML_uYg6LuBtT-W5X3I9tQQ==/lib/arm64:/data/app/~~7l3MnHxnUn7SjX271OOkqg==/com.wakeup.app-ML_uYg6LuBtT-W5X3I9tQQ==/base.apk!/lib/arm64-v8a, permitted_path=/data:/mnt/expand:/data/user/0/com.wakeup.app
+04-02 23:22:48.333 28788 28788 V GraphicsEnvironment: com.wakeup.app is not listed in per-application setting
+04-02 23:22:48.394 28788 29576 W com.wakeup.app: Loading /data/misc/apexdata/com.android.art/dalvik-cache/arm64/system@framework@com.android.location.provider.jar@classes.odex non-executable as it requires an image which we failed to load
+04-02 23:22:48.399 28788 28788 E com.wakeup.app: BBinder_init Processname  com.wakeup.app
+04-02 23:22:48.399 28788 28788 E com.wakeup.app: BBinder_init hasGetProcessName  com.wakeup.app
+04-02 23:22:48.451 28788 29576 W com.wakeup.app: Loading /data/app/~~k1o8EBgMnE6f8SA8wwU5_w==/com.google.android.gms-73194QPBTfABETVN1NvKbg==/oat/arm64/base.odex non-executable as it requires an image which we failed to load
+04-02 23:22:48.639 28788 29580 W com.wakeup.app: ClassLoaderContext classpath size mismatch. expected=1, found=0 (DLC[];PCL[base.apk*3532740154]{PCL[/system/framework/org.apache.http.legacy.jar*1230680128]#PCL[/system/framework/com.android.location.provider.jar*3414091812]#PCL[/system/framework/com.android.media.remotedisplay.jar*2042759013]#PCL[/system_ext/framework/androidx.window.extensions.jar*3366631065]#PCL[/system_ext/framework/androidx.window.sidecar.jar*1666522852]} | DLC[];PCL[])
+04-02 23:22:48.825 28788 28788 W com.wakeup.app: Method boolean androidx.compose.runtime.snapshots.SnapshotStateList.conditionalUpdate(boolean, kotlin.jvm.functions.Function1) failed lock verification and will run slower.
+04-02 23:22:48.825 28788 28788 W com.wakeup.app: Common causes for lock verification issues are non-optimized dex code
+04-02 23:22:48.825 28788 28788 W com.wakeup.app: and incorrect proguard optimizations.
+04-02 23:22:48.825 28788 28788 W com.wakeup.app: Method boolean androidx.compose.runtime.snapshots.SnapshotStateList.conditionalUpdate$default(androidx.compose.runtime.snapshots.SnapshotStateList, boolean, kotlin.jvm.functions.Function1, int, java.lang.Object) failed lock verification and will run slower.
+04-02 23:22:48.825 28788 28788 W com.wakeup.app: Method java.lang.Object androidx.compose.runtime.snapshots.SnapshotStateList.mutate(kotlin.jvm.functions.Function1) failed lock verification and will run slower.
+04-02 23:22:48.825 28788 28788 W com.wakeup.app: Method void androidx.compose.runtime.snapshots.SnapshotStateList.update(boolean, kotlin.jvm.functions.Function1) failed lock verification and will run slower.
+04-02 23:22:48.826 28788 28788 W com.wakeup.app: Method void androidx.compose.runtime.snapshots.SnapshotStateList.update$default(androidx.compose.runtime.snapshots.SnapshotStateList, boolean, kotlin.jvm.functions.Function1, int, java.lang.Object) failed lock verification and will run slower.
+04-02 23:22:49.102  1767  1806 I ActivityTaskManager: Displayed com.wakeup.app/.MainActivity for user 0: +1s116ms
+04-02 23:22:50.460 28788 28788 W com.wakeup.app: Loading /data/app/~~hlUObMT1sAByG_pdrLa6jg==/com.google.android.webview-9Dvk1K1EIy8ZavY9u02LCw==/oat/arm64/base.odex non-executable as it requires an image which we failed to load
+04-02 23:22:50.894 28788 29688 D com.wakeup.app: JNI_OnLoad: get JNI environment,JNI_VERSION_1_6
+04-02 23:22:50.898 28788 29688 D VivoJavaJsonManager: failed to find appName:com.wakeup.app from config key:mProtakePackages
+04-02 23:22:50.899 28788 29688 D VivoJavaJsonManager: failed to find appName:com.wakeup.app from config key:mProtakePackages
+04-02 23:22:50.900 28788 29573 D VivoJavaJsonManager: failed to find appName:com.wakeup.app from config key:mProtakePackages
+04-02 23:22:51.166 28788 29627 I AudioManager: In isSpeakerphoneOn(), calling application: com.wakeup.app
+04-02 23:22:51.348 28788 28788 E AndroidRuntime: Process: com.wakeup.app, PID: 28788
+04-02 23:22:51.348 28788 28788 E AndroidRuntime:        at com.wakeup.app.data.di.DataModule.provideDatabasePassphrase(DataModule.kt:95)
+04-02 23:22:51.348 28788 28788 E AndroidRuntime:        at com.wakeup.app.data.di.DataModule_ProvideDatabasePassphraseFactory.provideDatabasePassphrase(DataModule_ProvideDatabasePassphraseFactory.java:46)
+04-02 23:22:51.348 28788 28788 E AndroidRuntime:        at com.wakeup.app.DaggerWakeUpApplication_HiltComponents_SingletonC$SingletonCImpl$SwitchingProvider.get(DaggerWakeUpApplication_HiltComponents_SingletonC.java:1060)
+04-02 23:22:51.348 28788 28788 E AndroidRuntime:        at com.wakeup.app.DaggerWakeUpApplication_HiltComponents_SingletonC$SingletonCImpl$SwitchingProvider.get(DaggerWakeUpApplication_HiltComponents_SingletonC.java:1057)
+04-02 23:22:51.348 28788 28788 E AndroidRuntime:        at com.wakeup.app.DaggerWakeUpApplication_HiltComponents_SingletonC$SingletonCImpl$SwitchingProvider.get(DaggerWakeUpApplication_HiltComponents_SingletonC.java:1054)
+04-02 23:22:51.348 28788 28788 E AndroidRuntime:        at com.wakeup.app.DaggerWakeUpApplication_HiltComponents_SingletonC$SingletonCImpl$SwitchingProvider.get(DaggerWakeUpApplication_HiltComponents_SingletonC.java:1066)
+04-02 23:22:51.348 28788 28788 E AndroidRuntime:        at com.wakeup.app.DaggerWakeUpApplication_HiltComponents_SingletonC$SingletonCImpl$SwitchingProvider.get(DaggerWakeUpApplication_HiltComponents_SingletonC.java:1063)
+04-02 23:22:51.348 28788 28788 E AndroidRuntime:        at com.wakeup.app.DaggerWakeUpApplication_HiltComponents_SingletonC$ViewModelCImpl.getAllAlarmsUseCase(DaggerWakeUpApplication_HiltComponents_SingletonC.java:563)
+04-02 23:22:51.348 28788 28788 E AndroidRuntime:        at com.wakeup.app.DaggerWakeUpApplication_HiltComponents_SingletonC$ViewModelCImpl.-$$Nest$mgetAllAlarmsUseCase(Unknown Source:0)
+04-02 23:22:51.348 28788 28788 E AndroidRuntime:        at com.wakeup.app.DaggerWakeUpApplication_HiltComponents_SingletonC$ViewModelCImpl$SwitchingProvider.get(DaggerWakeUpApplication_HiltComponents_SingletonC.java:686)
+04-02 23:22:51.352 28788 28788 E AndroidRuntime:        at com.wakeup.app.presentation.home.HomeScreenKt.HomeScreen(HomeScreen.kt:519)
+04-02 23:22:51.352 28788 28788 E AndroidRuntime:        at com.wakeup.app.presentation.navigation.MainScreenKt$MainScreen$3$1$1.invoke(MainScreen.kt:116)
+04-02 23:22:51.352 28788 28788 E AndroidRuntime:        at com.wakeup.app.presentation.navigation.MainScreenKt$MainScreen$3$1$1.invoke(MainScreen.kt:115)
+04-02 23:22:51.352 28788 28788 E AndroidRuntime:        at com.wakeup.app.presentation.navigation.MainScreenKt$MainScreen$3.invoke(MainScreen.kt:108)
+04-02 23:22:51.352 28788 28788 E AndroidRuntime:        at com.wakeup.app.presentation.navigation.MainScreenKt$MainScreen$3.invoke(MainScreen.kt:107)
+04-02 23:22:51.409 28788 29564 I com.wakeup.app: Compiler allocated 7999KB to compile void android.view.ViewRootImpl.performTraversals()
+04-02 23:22:55.154 29485 29485 I com.wakeup.app: Late-enabling -Xcheck:jni
+04-02 23:22:55.229 29485 29485 I com.wakeup.app: Using CollectorTypeCC GC.
+04-02 23:22:55.351 29485 29485 E com.wakeup.app: BBinder_init Processname  <pre-initialized>
+04-02 23:22:55.419 29485 29485 D nativeloader: Configuring clns-7 for other apk /data/app/~~7l3MnHxnUn7SjX271OOkqg==/com.wakeup.app-ML_uYg6LuBtT-W5X3I9tQQ==/base.apk. target_sdk_version=35, uses_libraries=, library_path=/data/app/~~7l3MnHxnUn7SjX271OOkqg==/com.wakeup.app-ML_uYg6LuBtT-W5X3I9tQQ==/lib/arm64:/data/app/~~7l3MnHxnUn7SjX271OOkqg==/com.wakeup.app-ML_uYg6LuBtT-W5X3I9tQQ==/base.apk!/lib/arm64-v8a, permitted_path=/data:/mnt/expand:/data/user/0/com.wakeup.app
+04-02 23:22:55.446 29485 29485 V GraphicsEnvironment: com.wakeup.app is not listed in per-application setting
+04-02 23:22:55.495 29485 29783 W com.wakeup.app: Loading /data/misc/apexdata/com.android.art/dalvik-cache/arm64/system@framework@com.android.location.provider.jar@classes.odex non-executable as it requires an image which we failed to load
+04-02 23:22:55.512 29485 29783 W com.wakeup.app: Loading /data/app/~~k1o8EBgMnE6f8SA8wwU5_w==/com.google.android.gms-73194QPBTfABETVN1NvKbg==/oat/arm64/base.odex non-executable as it requires an image which we failed to load
+04-02 23:22:55.517 29485 29485 E com.wakeup.app: BBinder_init Processname  com.wakeup.app
+04-02 23:22:55.517 29485 29485 E com.wakeup.app: BBinder_init hasGetProcessName  com.wakeup.app
+04-02 23:22:55.754 29485 29790 W com.wakeup.app: ClassLoaderContext classpath size mismatch. expected=1, found=0 (DLC[];PCL[base.apk*3532740154]{PCL[/system/framework/org.apache.http.legacy.jar*1230680128]#PCL[/system/framework/com.android.location.provider.jar*3414091812]#PCL[/system/framework/com.android.media.remotedisplay.jar*2042759013]#PCL[/system_ext/framework/androidx.window.extensions.jar*3366631065]#PCL[/system_ext/framework/androidx.window.sidecar.jar*1666522852]} | DLC[];PCL[])
+04-02 23:22:55.933 29485 29485 W com.wakeup.app: Method boolean androidx.compose.runtime.snapshots.SnapshotStateList.conditionalUpdate(boolean, kotlin.jvm.functions.Function1) failed lock verification and will run slower.
+04-02 23:22:55.933 29485 29485 W com.wakeup.app: Common causes for lock verification issues are non-optimized dex code
+04-02 23:22:55.933 29485 29485 W com.wakeup.app: and incorrect proguard optimizations.
+04-02 23:22:55.933 29485 29485 W com.wakeup.app: Method boolean androidx.compose.runtime.snapshots.SnapshotStateList.conditionalUpdate$default(androidx.compose.runtime.snapshots.SnapshotStateList, boolean, kotlin.jvm.functions.Function1, int, java.lang.Object) failed lock verification and will run slower.
+04-02 23:22:55.934 29485 29485 W com.wakeup.app: Method java.lang.Object androidx.compose.runtime.snapshots.SnapshotStateList.mutate(kotlin.jvm.functions.Function1) failed lock verification and will run slower.
+04-02 23:22:55.934 29485 29485 W com.wakeup.app: Method void androidx.compose.runtime.snapshots.SnapshotStateList.update(boolean, kotlin.jvm.functions.Function1) failed lock verification and will run slower.
+04-02 23:22:55.934 29485 29485 W com.wakeup.app: Method void androidx.compose.runtime.snapshots.SnapshotStateList.update$default(androidx.compose.runtime.snapshots.SnapshotStateList, boolean, kotlin.jvm.functions.Function1, int, java.lang.Object) failed lock verification and will run slower.
+04-02 23:22:56.217  1767  1806 I ActivityTaskManager: Displayed com.wakeup.app/.MainActivity for user 0: +1s61ms
+04-02 23:22:57.540 29485 29485 W com.wakeup.app: Loading /data/app/~~hlUObMT1sAByG_pdrLa6jg==/com.google.android.webview-9Dvk1K1EIy8ZavY9u02LCw==/oat/arm64/base.odex non-executable as it requires an image which we failed to load
+04-02 23:22:57.947 29485 29883 D com.wakeup.app: JNI_OnLoad: get JNI environment,JNI_VERSION_1_6
+04-02 23:22:57.957 29485 29883 D VivoJavaJsonManager: failed to find appName:com.wakeup.app from config key:mProtakePackages
+04-02 23:22:57.957 29485 29883 D VivoJavaJsonManager: failed to find appName:com.wakeup.app from config key:mProtakePackages
+04-02 23:22:57.959 29485 29777 D VivoJavaJsonManager: failed to find appName:com.wakeup.app from config key:mProtakePackages
+04-02 23:22:58.173 29485 29829 I AudioManager: In isSpeakerphoneOn(), calling application: com.wakeup.app
+04-02 23:22:58.374 29485 29485 E AndroidRuntime: Process: com.wakeup.app, PID: 29485
+04-02 23:22:58.374 29485 29485 E AndroidRuntime:        at com.wakeup.app.data.di.DataModule.provideDatabasePassphrase(DataModule.kt:95)
+04-02 23:22:58.374 29485 29485 E AndroidRuntime:        at com.wakeup.app.data.di.DataModule_ProvideDatabasePassphraseFactory.provideDatabasePassphrase(DataModule_ProvideDatabasePassphraseFactory.java:46)
+04-02 23:22:58.374 29485 29485 E AndroidRuntime:        at com.wakeup.app.DaggerWakeUpApplication_HiltComponents_SingletonC$SingletonCImpl$SwitchingProvider.get(DaggerWakeUpApplication_HiltComponents_SingletonC.java:1060)
+04-02 23:22:58.374 29485 29485 E AndroidRuntime:        at com.wakeup.app.DaggerWakeUpApplication_HiltComponents_SingletonC$SingletonCImpl$SwitchingProvider.get(DaggerWakeUpApplication_HiltComponents_SingletonC.java:1057)
+04-02 23:22:58.374 29485 29485 E AndroidRuntime:        at com.wakeup.app.DaggerWakeUpApplication_HiltComponents_SingletonC$SingletonCImpl$SwitchingProvider.get(DaggerWakeUpApplication_HiltComponents_SingletonC.java:1054)
+04-02 23:22:58.374 29485 29485 E AndroidRuntime:        at com.wakeup.app.DaggerWakeUpApplication_HiltComponents_SingletonC$SingletonCImpl$SwitchingProvider.get(DaggerWakeUpApplication_HiltComponents_SingletonC.java:1066)
+04-02 23:22:58.374 29485 29485 E AndroidRuntime:        at com.wakeup.app.DaggerWakeUpApplication_HiltComponents_SingletonC$SingletonCImpl$SwitchingProvider.get(DaggerWakeUpApplication_HiltComponents_SingletonC.java:1063)
+04-02 23:22:58.374 29485 29485 E AndroidRuntime:        at com.wakeup.app.DaggerWakeUpApplication_HiltComponents_SingletonC$ViewModelCImpl.getAllAlarmsUseCase(DaggerWakeUpApplication_HiltComponents_SingletonC.java:563)
+04-02 23:22:58.374 29485 29485 E AndroidRuntime:        at com.wakeup.app.DaggerWakeUpApplication_HiltComponents_SingletonC$ViewModelCImpl.-$$Nest$mgetAllAlarmsUseCase(Unknown Source:0)
+04-02 23:22:58.374 29485 29485 E AndroidRuntime:        at com.wakeup.app.DaggerWakeUpApplication_HiltComponents_SingletonC$ViewModelCImpl$SwitchingProvider.get(DaggerWakeUpApplication_HiltComponents_SingletonC.java:686)
+04-02 23:22:58.377 29485 29485 E AndroidRuntime:        at com.wakeup.app.presentation.home.HomeScreenKt.HomeScreen(HomeScreen.kt:519)
+04-02 23:22:58.377 29485 29485 E AndroidRuntime:        at com.wakeup.app.presentation.navigation.MainScreenKt$MainScreen$3$1$1.invoke(MainScreen.kt:116)
+04-02 23:22:58.377 29485 29485 E AndroidRuntime:        at com.wakeup.app.presentation.navigation.MainScreenKt$MainScreen$3$1$1.invoke(MainScreen.kt:115)
+04-02 23:22:58.377 29485 29485 E AndroidRuntime:        at com.wakeup.app.presentation.navigation.MainScreenKt$MainScreen$3.invoke(MainScreen.kt:108)
+04-02 23:22:58.377 29485 29485 E AndroidRuntime:        at com.wakeup.app.presentation.navigation.MainScreenKt$MainScreen$3.invoke(MainScreen.kt:107)
+^C^C
+C:\Users\sayae>

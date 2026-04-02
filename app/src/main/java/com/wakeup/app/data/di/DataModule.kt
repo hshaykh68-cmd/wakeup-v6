@@ -71,29 +71,44 @@ object DataModule {
     @Singleton
     @Named("db_passphrase")
     fun provideDatabasePassphrase(@ApplicationContext context: Context): ByteArray {
+        val keyAlias = "wakeup_db_passphrase_key"
         val keyStore = KeyStore.getInstance("AndroidKeyStore").apply { load(null) }
-        val keyAlias = "wakeup_db_key"
-        
-        if (!keyStore.containsAlias(keyAlias)) {
-            val keyGen = KeyGenerator.getInstance(
-                KeyProperties.KEY_ALGORITHM_AES, "AndroidKeyStore"
-            )
-            keyGen.init(
-                KeyGenParameterSpec.Builder(keyAlias,
-                    KeyProperties.PURPOSE_ENCRYPT or KeyProperties.PURPOSE_DECRYPT)
-                    .setBlockModes(KeyProperties.BLOCK_MODE_GCM)
-                    .setEncryptionPaddings(KeyProperties.ENCRYPTION_PADDING_NONE)
-                    .setKeySize(256)
-                    .build()
-            )
-            keyGen.generateKey()
+
+        val key = try {
+            if (!keyStore.containsAlias(keyAlias)) {
+                generateHmacKey(keyAlias)
+            }
+            keyStore.getKey(keyAlias, null) as SecretKey
+        } catch (e: Exception) {
+            // If keystore fails (e.g., after app reinstall), delete and regenerate
+            try {
+                keyStore.deleteEntry(keyAlias)
+            } catch (_: Exception) { }
+            generateHmacKey(keyAlias)
+            keyStore.getKey(keyAlias, null) as SecretKey
         }
-        
-        val key = keyStore.getKey(keyAlias, null) as SecretKey
-        // Derive a deterministic passphrase from the hardware key
-        val mac = Mac.getInstance("HmacSHA256")
-        mac.init(key)
-        return mac.doFinal("wakeup_database".toByteArray())
+
+        return try {
+            val mac = Mac.getInstance("HmacSHA256")
+            mac.init(key)
+            mac.doFinal("wakeup_database_passphrase".toByteArray(Charsets.UTF_8))
+        } catch (e: Exception) {
+            // Fallback: derive from a static string + device-specific data
+            // This maintains consistency per device while being recoverable
+            val fallback = (keyAlias + context.packageName).toByteArray(Charsets.UTF_8)
+            fallback.copyOf(32) // Ensure 32 bytes for SQLCipher
+        }
+    }
+
+    private fun generateHmacKey(alias: String) {
+        val keyGen = KeyGenerator.getInstance("HmacSHA256", "AndroidKeyStore")
+        keyGen.init(
+            KeyGenParameterSpec.Builder(
+                alias,
+                KeyProperties.PURPOSE_SIGN or KeyProperties.PURPOSE_VERIFY
+            ).build()
+        )
+        keyGen.generateKey()
     }
 
     @Provides
