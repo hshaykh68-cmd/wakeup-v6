@@ -585,6 +585,7 @@ private fun ComboPhotoCaptureContent(
     }
 }
 
+@Suppress("UnsafeOptInUsageError")
 @OptIn(ExperimentalGetImage::class)
 private fun processBarcode(
     imageProxy: ImageProxy,

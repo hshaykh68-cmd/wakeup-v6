@@ -257,6 +257,7 @@ fun BarcodeMissionContent(
 /**
  * Process image for barcode detection
  */
+@Suppress("UnsafeOptInUsageError")
 @OptIn(ExperimentalGetImage::class)
 private fun processBarcodeImage(
     imageProxy: ImageProxy,

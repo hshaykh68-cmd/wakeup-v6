@@ -166,6 +166,7 @@ fun BarcodeSetupDialog(
 /**
  * Process image for barcode detection during setup
  */
+@Suppress("UnsafeOptInUsageError")
 @OptIn(ExperimentalGetImage::class)
 private fun processBarcodeForSetup(
     imageProxy: ImageProxy,
