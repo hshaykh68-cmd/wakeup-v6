@@ -18,7 +18,9 @@ import com.wakeup.app.domain.repository.AlarmRepository
 import com.wakeup.app.domain.repository.SettingsRepository
 import com.wakeup.app.domain.repository.StatsRepository
 import com.wakeup.app.domain.repository.WakeHistoryRepository
-import com.wakeup.app.data.repository.WidgetStateRepositoryImpl
+import com.wakeup.app.core.oem.OEMDetector
+import com.wakeup.app.core.oem.OEMDetectorImpl
+import com.wakeup.app.data.local.dao.SleepDao
 import com.wakeup.app.data.repository.SleepSoundRepositoryImpl
 import com.wakeup.app.data.repository.OEMSettingsRepositoryImpl
 import com.wakeup.app.domain.repository.WidgetStateRepository
@@ -186,6 +188,14 @@ object DataModule {
     ): AlarmLabelSuggestionsProvider {
         return alarmLabelSuggestionsProviderImpl
     }
+
+    @Provides
+    @Singleton
+    fun provideSleepDao(database: WakeUpDatabase): SleepDao = database.sleepDao()
+
+    @Provides
+    @Singleton
+    fun provideOEMDetector(oemDetectorImpl: OEMDetectorImpl): OEMDetector = oemDetectorImpl
 
     @Provides
     @Singleton
