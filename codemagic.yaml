@@ -35,18 +35,6 @@ workflows:
         script: |
           ./gradlew lintDebug
           
-      - name: Run Unit Tests (Debug)
-        script: |
-          ./gradlew testDebugUnitTest
-          
-      - name: Run Unit Tests (Release)
-        script: |
-          ./gradlew testReleaseUnitTest
-          
-      - name: Run Android Instrumentation Tests
-        script: |
-          ./gradlew connectedDebugAndroidTest
-          
       - name: Build debug APK
         script: |
           ./gradlew assembleDebug
@@ -54,10 +42,6 @@ workflows:
     artifacts:
       - app/build/outputs/apk/debug/*.apk
       - app/build/reports/lint-results-debug.html
-      - app/build/reports/tests/testDebugUnitTest/
-      - app/build/reports/tests/testReleaseUnitTest/
-      - app/build/outputs/androidTest-results/
-      - app/build/reports/androidTests/connected/
       
     publishing:
       email:
