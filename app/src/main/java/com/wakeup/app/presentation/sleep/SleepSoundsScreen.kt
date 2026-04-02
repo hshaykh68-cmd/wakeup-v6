@@ -92,7 +92,7 @@ import androidx.core.view.WindowInsetsControllerCompat
 
 @OptIn(ExperimentalAnimationApi::class)
 @Composable
-private fun SleepSoundsScreen(
+fun SleepSoundsScreen(
     onNavigateBack: () -> Unit,
     onNavigateToPremium: () -> Unit = {},
     viewModel: SleepSoundsViewModel = hiltViewModel()

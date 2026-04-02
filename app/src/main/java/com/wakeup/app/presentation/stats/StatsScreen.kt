@@ -645,8 +645,7 @@ private fun AllTimeChart(history: List<WakeHistory>) {
                     lineSpec(
                         lineColor = WakeUpColors.iosPurple,
                         lineThickness = 3.dp,
-                        pointSize = 6.dp,
-                        pointColor = WakeUpColors.iosGreen
+                        pointSize = 6.dp
                     )
                 ),
                 axisValuesOverrider = AxisValuesOverrider.fixed(
@@ -905,8 +904,7 @@ private fun WakeUpTimeChart(
                     lineSpec(
                         lineColor = WakeUpColors.iosBlue,
                         lineThickness = 3.dp,
-                        pointSize = if (timeRange == StatsTimeRange.ALL_TIME) 4.dp else 8.dp,
-                        pointColor = WakeUpColors.iosBlue
+                        pointSize = if (timeRange == StatsTimeRange.ALL_TIME) 4.dp else 8.dp
                     )
                 ),
                 axisValuesOverrider = AxisValuesOverrider.fixed(
