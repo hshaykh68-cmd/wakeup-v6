@@ -1,21 +1,9 @@
 package com.wakeup.app.presentation.home
 
-import androidx.compose.animation.AnimatedVisibility
-import androidx.compose.animation.core.animateFloatAsState
-import androidx.compose.animation.fadeIn
-import androidx.compose.animation.fadeOut
+import androidx.compose.animation.*
+import androidx.compose.animation.core.*
 import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -26,35 +14,33 @@ import androidx.compose.material.icons.filled.Bedtime
 import androidx.compose.material.icons.filled.LocalFireDepartment
 import androidx.compose.material.icons.filled.Notifications
 import androidx.compose.material.icons.filled.WbSunny
-import androidx.compose.material3.Card
-import androidx.compose.material3.CardDefaults
-import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.FloatingActionButton
-import androidx.compose.material3.Icon
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Text
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.collectAsState
-import androidx.compose.runtime.getValue
+import androidx.compose.material3.*
+import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.blur
-import androidx.compose.ui.draw.clip
-import androidx.compose.ui.draw.scale
-import androidx.compose.ui.graphics.Brush
-import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.draw.*
+import androidx.compose.ui.geometry.Offset
+import androidx.compose.ui.graphics.*
+import androidx.compose.ui.graphics.drawscope.drawIntoCanvas
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.wakeup.app.core.theme.WakeUpColors
-import com.wakeup.app.core.designsystem.tokens.OpacityTokens
-import com.wakeup.app.core.designsystem.tokens.SpacingTokens
-import com.wakeup.app.core.designsystem.tokens.ShapeTokens
-import com.wakeup.app.core.designsystem.tokens.IconSizeTokens
-import com.wakeup.app.core.extensions.bounceClick
 import com.wakeup.app.domain.model.Alarm
+import com.wakeup.app.presentation.home.components.*
+import com.wakeup.app.presentation.home.modifiers.*
+import kotlinx.coroutines.launch
 
+/**
+ * Home Screen - "Illegal Level Glass UI"
+ * Complete redesign with:
+ * - Aurora background with 5 animated color blobs
+ * - HyperGlass cards with heavy blur + edge highlights + inner shadows
+ * - Physics-based interactions (melt + spring + glow burst)
+ * - Liquid touch ripple effects
+ * - 5-layer depth system with parallax
+ * - Moving light highlights + chromatic aberration
+ */
 @Composable
 fun HomeScreen(
     viewModel: HomeViewModel = hiltViewModel(),
@@ -63,129 +49,246 @@ fun HomeScreen(
     onNavigateToSleepSounds: () -> Unit = {}
 ) {
     val uiState by viewModel.uiState.collectAsState()
+    val scrollState = rememberScrollState()
+    val parallaxState = rememberParallaxScrollState()
+    val coroutineScope = rememberCoroutineScope()
 
-    Scaffold(
-        floatingActionButton = {
-            FloatingActionButton(
-                onClick = onCreateAlarm,
-                containerColor = WakeUpColors.iosBlue,
-                contentColor = Color.White,
-                shape = CircleShape
-            ) {
-                Icon(Icons.Default.Add, contentDescription = "Add Alarm")
-            }
+    // Update parallax scroll state
+    LaunchedEffect(scrollState.value) {
+        parallaxState.scrollOffset = -scrollState.value.toFloat()
+    }
+
+    Box(modifier = Modifier.fillMaxSize()) {
+        // Layer 0: Aurora Background (farthest)
+        DepthLayer(
+            config = DepthLayers.Background,
+            scrollState = parallaxState,
+            modifier = Modifier.fillMaxSize()
+        ) {
+            AuroraBackground(modifier = Modifier.fillMaxSize())
         }
-    ) { padding ->
+
+        // Layer 1: Floating Blurred Blobs (mid-depth)
+        DepthLayer(
+            config = DepthLayers.FloatingBlobs,
+            scrollState = parallaxState,
+            modifier = Modifier.fillMaxSize()
+        ) {
+            // Additional floating blur elements
+            Box(
+                modifier = Modifier
+                    .fillMaxSize()
+                    .blur(60.dp)
+                    .drawBehind {
+                        drawCircle(
+                            color = WakeUpColors.iosPurple.copy(alpha = 0.3f),
+                            radius = size.minDimension * 0.4f,
+                            center = Offset(size.width * 0.2f, size.height * 0.3f)
+                        )
+                        drawCircle(
+                            color = WakeUpColors.iosBlue.copy(alpha = 0.25f),
+                            radius = size.minDimension * 0.35f,
+                            center = Offset(size.width * 0.8f, size.height * 0.7f)
+                        )
+                    }
+            )
+        }
+
+        // Layer 2-4: Content with depth
         Column(
             modifier = Modifier
                 .fillMaxSize()
-                .verticalScroll(rememberScrollState())
-                .padding(padding)
-                .padding(horizontal = 20.dp),
+                .verticalScroll(scrollState)
+                .padding(horizontal = 20.dp)
+                .padding(top = 20.dp, bottom = 100.dp),
             verticalArrangement = Arrangement.spacedBy(20.dp)
         ) {
-            // Greeting Header
-            HomeHeader(
-                streak = uiState.currentStreak,
-                greeting = uiState.greeting
-            )
+            // Header with floating effect
+            DepthLayer(
+                config = DepthLayers.FloatingContent,
+                scrollState = parallaxState,
+                modifier = Modifier.fillMaxWidth()
+            ) {
+                HomeHeader(
+                    streak = uiState.currentStreak,
+                    greeting = uiState.greeting
+                )
+            }
 
-            // Next Alarm Card
-            NextAlarmCard(
-                nextAlarm = uiState.nextAlarm,
-                onNavigateToAlarms = onNavigateToAlarms
-            )
+            // Next Alarm Card with full glass effects
+            DepthLayer(
+                config = DepthLayers.GlassCards,
+                scrollState = parallaxState,
+                modifier = Modifier.fillMaxWidth()
+            ) {
+                NextAlarmHyperCard(
+                    nextAlarm = uiState.nextAlarm,
+                    onNavigateToAlarms = onNavigateToAlarms
+                )
+            }
 
             // Streak Card
-            StreakCard(streak = uiState.currentStreak)
+            DepthLayer(
+                config = DepthLayers.GlassCards,
+                scrollState = parallaxState,
+                modifier = Modifier.fillMaxWidth()
+            ) {
+                StreakHyperCard(streak = uiState.currentStreak)
+            }
 
-            // Quick Stats
-            QuickStatsRow(
-                totalWakeUps = uiState.totalWakeUps,
-                successRate = uiState.successRate
-            )
+            // Quick Stats Row
+            DepthLayer(
+                config = DepthLayers.GlassCards,
+                scrollState = parallaxState,
+                modifier = Modifier.fillMaxWidth()
+            ) {
+                QuickStatsHyperRow(
+                    totalWakeUps = uiState.totalWakeUps,
+                    successRate = uiState.successRate
+                )
+            }
 
             // Sleep Sounds Card
-            SleepSoundsCard(onClick = onNavigateToSleepSounds)
+            DepthLayer(
+                config = DepthLayers.GlassCards,
+                scrollState = parallaxState,
+                modifier = Modifier.fillMaxWidth()
+            ) {
+                SleepSoundsHyperCard(onClick = onNavigateToSleepSounds)
+            }
 
-            Spacer(modifier = Modifier.height(20.dp))
+            Spacer(modifier = Modifier.height(40.dp))
+        }
+
+        // Floating Action Button with glass effect + glow
+        Box(
+            modifier = Modifier.fillMaxSize(),
+            contentAlignment = Alignment.BottomEnd
+        ) {
+            DepthLayer(
+                config = DepthLayers.GlowOverlay,
+                scrollState = parallaxState,
+                modifier = Modifier.padding(24.dp)
+            ) {
+                GlassFAB(onClick = onCreateAlarm)
+            }
+        }
+
+        // Glow overlay layer (closest)
+        DepthLayer(
+            config = DepthLayers.GlowOverlay,
+            scrollState = parallaxState,
+            modifier = Modifier.fillMaxSize()
+        ) {
+            // Global moving highlight overlay
+            MovingHighlight(
+                modifier = Modifier.fillMaxSize(),
+                highlightWidth = 0.4f,
+                duration = 8000,
+                intensity = 0.08f
+            )
         }
     }
 }
 
 @Composable
 private fun HomeHeader(streak: Int, greeting: String) {
+    val infiniteTransition = rememberInfiniteTransition(label = "header")
+
+    val glowAlpha by infiniteTransition.animateFloat(
+        initialValue = 0.3f,
+        targetValue = 0.5f,
+        animationSpec = infiniteRepeatable(
+            animation = tween(4000, easing = EaseInOutSine),
+            repeatMode = RepeatMode.Reverse
+        ),
+        label = "header_glow"
+    )
+
     Box(
         modifier = Modifier
             .fillMaxWidth()
-            .padding(top = 8.dp, bottom = 8.dp)
+            .padding(vertical = 16.dp)
     ) {
-        // Glassmorphic background
+        // Background glow
         Box(
             modifier = Modifier
                 .fillMaxWidth()
-                .height(80.dp)
-                .clip(RoundedCornerShape(ShapeTokens.mdLg))
-                .background(
-                    brush = Brush.horizontalGradient(
-                        colors = listOf(
-                            WakeUpColors.iosBlue.copy(alpha = OpacityTokens.light),
-                            WakeUpColors.iosPurple.copy(alpha = OpacityTokens.subtle)
+                .height(100.dp)
+                .drawBehind {
+                    drawRect(
+                        brush = Brush.horizontalGradient(
+                            colors = listOf(
+                                WakeUpColors.iosBlue.copy(alpha = glowAlpha * 0.5f),
+                                WakeUpColors.iosPurple.copy(alpha = glowAlpha * 0.3f),
+                                Color.Transparent
+                            )
                         )
                     )
-                )
+                }
+                .blur(40.dp)
         )
 
         // Content
         Row(
             modifier = Modifier
                 .fillMaxWidth()
-                .height(80.dp)
-                .padding(horizontal = 20.dp),
+                .height(100.dp)
+                .padding(horizontal = 4.dp),
             horizontalArrangement = Arrangement.SpaceBetween,
             verticalAlignment = Alignment.CenterVertically
         ) {
             Column {
                 Text(
                     text = greeting,
-                    style = MaterialTheme.typography.headlineSmall,
-                    color = MaterialTheme.colorScheme.onBackground,
+                    style = MaterialTheme.typography.headlineMedium,
+                    color = Color.White,
                     fontWeight = FontWeight.Bold
                 )
                 Text(
                     text = "Let's win the morning",
-                    style = MaterialTheme.typography.bodyMedium,
-                    color = MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.8f)
+                    style = MaterialTheme.typography.bodyLarge,
+                    color = Color.White.copy(alpha = 0.7f)
                 )
             }
 
-            // Streak badge with glassmorphism
+            // Streak badge with breathing glow
             Box(
                 modifier = Modifier
-                    .clip(RoundedCornerShape(ShapeTokens.mdLg))
+                    .breathingGlow(
+                        color = WakeUpColors.iosOrange,
+                        minAlpha = 0.15f,
+                        maxAlpha = 0.35f
+                    )
+                    .clip(RoundedCornerShape(20.dp))
                     .background(
                         brush = Brush.linearGradient(
                             colors = listOf(
-                                WakeUpColors.iosOrange.copy(alpha = OpacityTokens.light),
-                                WakeUpColors.iosOrange.copy(alpha = OpacityTokens.subtle)
+                                WakeUpColors.iosOrange.copy(alpha = 0.25f),
+                                WakeUpColors.iosOrange.copy(alpha = 0.1f)
                             )
                         )
                     )
-                    .padding(horizontal = SpacingTokens.smMd, vertical = SpacingTokens.sm)
+                    .border(
+                        width = 1.dp,
+                        color = WakeUpColors.iosOrange.copy(alpha = 0.4f),
+                        shape = RoundedCornerShape(20.dp)
+                    )
+                    .padding(horizontal = 16.dp, vertical = 12.dp)
             ) {
                 Row(
-                    horizontalArrangement = Arrangement.spacedBy(6.dp),
+                    horizontalArrangement = Arrangement.spacedBy(8.dp),
                     verticalAlignment = Alignment.CenterVertically
                 ) {
                     Icon(
                         imageVector = Icons.Default.LocalFireDepartment,
                         contentDescription = null,
                         tint = WakeUpColors.iosOrange,
-                        modifier = Modifier.size(20.dp)
+                        modifier = Modifier.size(24.dp)
                     )
                     Text(
                         text = "$streak",
-                        style = MaterialTheme.typography.titleMedium,
+                        style = MaterialTheme.typography.titleLarge,
                         color = WakeUpColors.iosOrange,
                         fontWeight = FontWeight.Bold
                     )
@@ -195,47 +298,20 @@ private fun HomeHeader(streak: Int, greeting: String) {
     }
 }
 
-@OptIn(ExperimentalMaterial3Api::class)
 @Composable
-private fun NextAlarmCard(
+private fun NextAlarmHyperCard(
     nextAlarm: Alarm?,
     onNavigateToAlarms: () -> Unit
 ) {
-    @OptIn(ExperimentalMaterial3Api::class)
-    Card(
-        onClick = onNavigateToAlarms,
+    AlarmHyperGlassCard(
         modifier = Modifier
             .fillMaxWidth()
-            .bounceClick { onNavigateToAlarms() },
-        shape = RoundedCornerShape(24.dp),
-        colors = CardDefaults.cardColors(
-            containerColor = if (nextAlarm != null) {
-                Brush.horizontalGradient(
-                    colors = listOf(WakeUpColors.iosBlue.copy(alpha = 0.9f), WakeUpColors.iosPurple.copy(alpha = 0.9f))
-                ).let { WakeUpColors.iosBlue }
-            } else MaterialTheme.colorScheme.surfaceVariant
-        ),
-        elevation = CardDefaults.cardElevation(defaultElevation = 0.dp)
+            .physicsGlassInteraction { onNavigateToAlarms() },
+        isActive = nextAlarm != null
     ) {
         Box(
             modifier = Modifier
                 .fillMaxWidth()
-                .background(
-                    brush = if (nextAlarm != null) {
-                        Brush.linearGradient(
-                            colors = listOf(
-                                WakeUpColors.iosBlue,
-                                WakeUpColors.iosPurple.copy(alpha = 0.8f)
-                            )
-                        )
-                    } else Brush.linearGradient(
-                        colors = listOf(
-                            MaterialTheme.colorScheme.surfaceVariant,
-                            MaterialTheme.colorScheme.surfaceVariant
-                        )
-                    ),
-                    shape = RoundedCornerShape(24.dp)
-                )
                 .padding(24.dp)
         ) {
             if (nextAlarm != null) {
@@ -247,53 +323,60 @@ private fun NextAlarmCard(
                         Icon(
                             imageVector = Icons.Default.Notifications,
                             contentDescription = null,
-                            tint = Color.White,
+                            tint = Color.White.copy(alpha = 0.8f),
                             modifier = Modifier.size(20.dp)
                         )
                         Text(
                             text = "Next Alarm",
                             style = MaterialTheme.typography.labelMedium,
-                            color = Color.White.copy(alpha = 0.8f)
+                            color = Color.White.copy(alpha = 0.7f)
                         )
                     }
+
                     Spacer(modifier = Modifier.height(12.dp))
+
                     Text(
                         text = nextAlarm.formattedTime(),
                         style = MaterialTheme.typography.displayLarge,
                         color = Color.White,
                         fontWeight = FontWeight.Bold
                     )
+
                     Text(
                         text = nextAlarm.label,
                         style = MaterialTheme.typography.bodyLarge,
                         color = Color.White.copy(alpha = 0.9f)
                     )
+
                     if (nextAlarm.repeatDays.isNotEmpty()) {
                         Text(
                             text = com.wakeup.app.core.util.DateTimeUtil.formatRepeatDays(nextAlarm.repeatDays),
                             style = MaterialTheme.typography.bodyMedium,
-                            color = Color.White.copy(alpha = 0.7f)
+                            color = Color.White.copy(alpha = 0.6f)
                         )
                     }
                 }
             } else {
-                Column(horizontalAlignment = Alignment.CenterHorizontally) {
+                Column(
+                    horizontalAlignment = Alignment.CenterHorizontally,
+                    modifier = Modifier.fillMaxWidth()
+                ) {
                     Icon(
                         imageVector = Icons.Default.WbSunny,
                         contentDescription = null,
-                        tint = MaterialTheme.colorScheme.onSurfaceVariant,
+                        tint = Color.White.copy(alpha = 0.6f),
                         modifier = Modifier.size(48.dp)
                     )
                     Spacer(modifier = Modifier.height(12.dp))
                     Text(
                         text = "No alarms set",
                         style = MaterialTheme.typography.titleMedium,
-                        color = MaterialTheme.colorScheme.onSurfaceVariant
+                        color = Color.White.copy(alpha = 0.8f)
                     )
                     Text(
                         text = "Tap to create your first alarm",
                         style = MaterialTheme.typography.bodyMedium,
-                        color = MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.7f)
+                        color = Color.White.copy(alpha = 0.5f)
                     )
                 }
             }
@@ -301,16 +384,18 @@ private fun NextAlarmCard(
     }
 }
 
-@OptIn(ExperimentalMaterial3Api::class)
 @Composable
-private fun StreakCard(streak: Int) {
-    Card(
+private fun StreakHyperCard(streak: Int) {
+    HyperGlassCard(
         modifier = Modifier.fillMaxWidth(),
-        shape = RoundedCornerShape(20.dp),
-        colors = CardDefaults.cardColors(
-            containerColor = MaterialTheme.colorScheme.surface
+        cornerRadius = 24.dp,
+        blurAmount = 25.dp,
+        gradientColors = listOf(
+            WakeUpColors.iosOrange.copy(alpha = 0.12f),
+            Color.White.copy(alpha = 0.06f),
+            Color.White.copy(alpha = 0.03f)
         ),
-        elevation = CardDefaults.cardElevation(defaultElevation = 2.dp)
+        glowColor = WakeUpColors.iosOrange.copy(alpha = 0.2f)
     ) {
         Row(
             modifier = Modifier
@@ -323,22 +408,27 @@ private fun StreakCard(streak: Int) {
                 Text(
                     text = "Current Streak",
                     style = MaterialTheme.typography.labelMedium,
-                    color = MaterialTheme.colorScheme.onSurfaceVariant
+                    color = Color.White.copy(alpha = 0.6f)
                 )
                 Text(
                     text = "$streak days",
                     style = MaterialTheme.typography.headlineMedium,
-                    color = MaterialTheme.colorScheme.onSurface,
+                    color = Color.White,
                     fontWeight = FontWeight.Bold
                 )
             }
+
+            // Animated streak icon
             Box(
                 modifier = Modifier
                     .size(56.dp)
-                    .background(
-                        color = WakeUpColors.iosOrange.copy(alpha = 0.15f),
-                        shape = CircleShape
-                    ),
+                    .breathingGlow(
+                        color = WakeUpColors.iosOrange,
+                        minAlpha = 0.2f,
+                        maxAlpha = 0.4f
+                    )
+                    .clip(CircleShape)
+                    .background(WakeUpColors.iosOrange.copy(alpha = 0.2f)),
                 contentAlignment = Alignment.Center
             ) {
                 Icon(
@@ -353,91 +443,104 @@ private fun StreakCard(streak: Int) {
 }
 
 @Composable
-private fun QuickStatsRow(totalWakeUps: Int, successRate: Float) {
+private fun QuickStatsHyperRow(
+    totalWakeUps: Int,
+    successRate: Float
+) {
     Row(
         modifier = Modifier.fillMaxWidth(),
         horizontalArrangement = Arrangement.spacedBy(12.dp)
     ) {
-        QuickStatCard(
-            title = "Wake-ups",
-            value = totalWakeUps.toString(),
-            icon = Icons.Default.WbSunny,
-            iconTint = WakeUpColors.iosYellow,
-            backgroundColor = WakeUpColors.iosYellow.copy(alpha = 0.1f),
-            modifier = Modifier.weight(1f)
-        )
-        QuickStatCard(
-            title = "Success Rate",
-            value = "${successRate.toInt()}%",
-            icon = Icons.Default.LocalFireDepartment,
-            iconTint = WakeUpColors.iosGreen,
-            backgroundColor = WakeUpColors.iosGreen.copy(alpha = 0.1f),
-            modifier = Modifier.weight(1f)
-        )
-    }
-}
-
-@Composable
-private fun QuickStatCard(
-    title: String,
-    value: String,
-    icon: androidx.compose.ui.graphics.vector.ImageVector,
-    iconTint: Color,
-    backgroundColor: Color,
-    modifier: Modifier = Modifier
-) {
-    Card(
-        modifier = modifier,
-        shape = RoundedCornerShape(16.dp),
-        colors = CardDefaults.cardColors(
-            containerColor = MaterialTheme.colorScheme.surface
-        ),
-        elevation = CardDefaults.cardElevation(defaultElevation = 2.dp)
-    ) {
-        Column(
-            modifier = Modifier.padding(16.dp),
-            verticalArrangement = Arrangement.spacedBy(8.dp)
+        // Wake-ups stat
+        StatHyperGlassCard(
+            modifier = Modifier.weight(1f),
+            accentColor = WakeUpColors.iosYellow
         ) {
-            Box(
-                modifier = Modifier
-                    .size(40.dp)
-                    .background(backgroundColor, CircleShape),
-                contentAlignment = Alignment.Center
+            Column(
+                modifier = Modifier.padding(16.dp),
+                verticalArrangement = Arrangement.spacedBy(8.dp)
             ) {
-                Icon(
-                    imageVector = icon,
-                    contentDescription = null,
-                    tint = iconTint,
-                    modifier = Modifier.size(24.dp)
+                Box(
+                    modifier = Modifier
+                        .size(40.dp)
+                        .clip(CircleShape)
+                        .background(WakeUpColors.iosYellow.copy(alpha = 0.2f)),
+                    contentAlignment = Alignment.Center
+                ) {
+                    Icon(
+                        imageVector = Icons.Default.WbSunny,
+                        contentDescription = null,
+                        tint = WakeUpColors.iosYellow,
+                        modifier = Modifier.size(24.dp)
+                    )
+                }
+                Text(
+                    text = totalWakeUps.toString(),
+                    style = MaterialTheme.typography.headlineSmall,
+                    color = Color.White,
+                    fontWeight = FontWeight.Bold
+                )
+                Text(
+                    text = "Wake-ups",
+                    style = MaterialTheme.typography.labelSmall,
+                    color = Color.White.copy(alpha = 0.6f)
                 )
             }
-            Text(
-                text = value,
-                style = MaterialTheme.typography.headlineSmall,
-                color = MaterialTheme.colorScheme.onSurface,
-                fontWeight = FontWeight.Bold
-            )
-            Text(
-                text = title,
-                style = MaterialTheme.typography.labelSmall,
-                color = MaterialTheme.colorScheme.onSurfaceVariant
-            )
+        }
+
+        // Success rate stat
+        StatHyperGlassCard(
+            modifier = Modifier.weight(1f),
+            accentColor = WakeUpColors.iosGreen
+        ) {
+            Column(
+                modifier = Modifier.padding(16.dp),
+                verticalArrangement = Arrangement.spacedBy(8.dp)
+            ) {
+                Box(
+                    modifier = Modifier
+                        .size(40.dp)
+                        .clip(CircleShape)
+                        .background(WakeUpColors.iosGreen.copy(alpha = 0.2f)),
+                    contentAlignment = Alignment.Center
+                ) {
+                    Icon(
+                        imageVector = Icons.Default.LocalFireDepartment,
+                        contentDescription = null,
+                        tint = WakeUpColors.iosGreen,
+                        modifier = Modifier.size(24.dp)
+                    )
+                }
+                Text(
+                    text = "${successRate.toInt()}%",
+                    style = MaterialTheme.typography.headlineSmall,
+                    color = Color.White,
+                    fontWeight = FontWeight.Bold
+                )
+                Text(
+                    text = "Success Rate",
+                    style = MaterialTheme.typography.labelSmall,
+                    color = Color.White.copy(alpha = 0.6f)
+                )
+            }
         }
     }
 }
 
 @Composable
-private fun SleepSoundsCard(onClick: () -> Unit) {
-    Card(
-        onClick = onClick,
+private fun SleepSoundsHyperCard(onClick: () -> Unit) {
+    HyperGlassCard(
         modifier = Modifier
             .fillMaxWidth()
-            .bounceClick { onClick() },
-        shape = RoundedCornerShape(20.dp),
-        colors = CardDefaults.cardColors(
-            containerColor = MaterialTheme.colorScheme.surface
+            .physicsGlassInteraction { onClick() },
+        cornerRadius = 24.dp,
+        blurAmount = 25.dp,
+        gradientColors = listOf(
+            WakeUpColors.iosPurple.copy(alpha = 0.12f),
+            WakeUpColors.iosBlue.copy(alpha = 0.06f),
+            Color.White.copy(alpha = 0.03f)
         ),
-        elevation = CardDefaults.cardElevation(defaultElevation = 2.dp)
+        glowColor = WakeUpColors.iosPurple.copy(alpha = 0.2f)
     ) {
         Row(
             modifier = Modifier
@@ -453,21 +556,21 @@ private fun SleepSoundsCard(onClick: () -> Unit) {
                 Box(
                     modifier = Modifier
                         .size(56.dp)
+                        .clip(CircleShape)
                         .background(
                             brush = Brush.linearGradient(
                                 colors = listOf(
-                                    WakeUpColors.iosPurple.copy(alpha = 0.3f),
+                                    WakeUpColors.iosPurple.copy(alpha = 0.4f),
                                     WakeUpColors.iosBlue.copy(alpha = 0.2f)
                                 )
-                            ),
-                            shape = CircleShape
+                            )
                         ),
                     contentAlignment = Alignment.Center
                 ) {
                     Icon(
                         imageVector = Icons.Default.Bedtime,
                         contentDescription = null,
-                        tint = WakeUpColors.iosPurple,
+                        tint = Color.White,
                         modifier = Modifier.size(28.dp)
                     )
                 }
@@ -476,13 +579,13 @@ private fun SleepSoundsCard(onClick: () -> Unit) {
                     Text(
                         text = "Sleep Sounds",
                         style = MaterialTheme.typography.titleMedium,
-                        color = MaterialTheme.colorScheme.onSurface,
+                        color = Color.White,
                         fontWeight = FontWeight.Bold
                     )
                     Text(
                         text = "Relax & fall asleep faster",
                         style = MaterialTheme.typography.bodyMedium,
-                        color = MaterialTheme.colorScheme.onSurfaceVariant
+                        color = Color.White.copy(alpha = 0.6f)
                     )
                 }
             }
@@ -491,19 +594,97 @@ private fun SleepSoundsCard(onClick: () -> Unit) {
             Box(
                 modifier = Modifier
                     .size(36.dp)
-                    .background(
-                        color = WakeUpColors.iosPurple.copy(alpha = 0.1f),
-                        shape = CircleShape
-                    ),
+                    .clip(CircleShape)
+                    .background(WakeUpColors.iosPurple.copy(alpha = 0.3f)),
                 contentAlignment = Alignment.Center
             ) {
                 Icon(
                     imageVector = Icons.Default.Add,
                     contentDescription = "Open",
-                    tint = WakeUpColors.iosPurple,
+                    tint = Color.White,
                     modifier = Modifier.size(20.dp)
                 )
             }
+        }
+    }
+}
+
+@Composable
+private fun GlassFAB(onClick: () -> Unit) {
+    var isPressed by remember { mutableStateOf(false) }
+
+    val scale by animateFloatAsState(
+        targetValue = if (isPressed) 0.9f else 1f,
+        animationSpec = spring(
+            dampingRatio = Spring.DampingRatioMediumBouncy,
+            stiffness = Spring.StiffnessLow
+        ),
+        label = "fab_scale"
+    )
+
+    val glowRadius by animateDpAsState(
+        targetValue = if (isPressed) 40.dp else 24.dp,
+        animationSpec = spring(
+            dampingRatio = Spring.DampingRatioLowBouncy,
+            stiffness = Spring.StiffnessVeryLow
+        ),
+        label = "fab_glow"
+    )
+
+    val glowAlpha by animateFloatAsState(
+        targetValue = if (isPressed) 0.6f else 0.3f,
+        animationSpec = tween(200),
+        label = "fab_glow_alpha"
+    )
+
+    Box(
+        modifier = Modifier
+            .size(72.dp)
+            .scale(scale)
+            .drawBehind {
+                // Outer glow
+                drawCircle(
+                    brush = Brush.radialGradient(
+                        colors = listOf(
+                            WakeUpColors.iosBlue.copy(alpha = glowAlpha),
+                            WakeUpColors.iosPurple.copy(alpha = glowAlpha * 0.5f),
+                            Color.Transparent
+                        )
+                    ),
+                    radius = (36.dp + glowRadius).toPx()
+                )
+            }
+            .clip(RoundedCornerShape(24.dp))
+            .blur(20.dp)
+            .background(
+                brush = Brush.linearGradient(
+                    colors = listOf(
+                        WakeUpColors.iosBlue.copy(alpha = 0.35f),
+                        WakeUpColors.iosPurple.copy(alpha = 0.25f)
+                    )
+                )
+            )
+            .border(
+                width = 1.dp,
+                color = Color.White.copy(alpha = 0.4f),
+                shape = RoundedCornerShape(24.dp)
+            ),
+        contentAlignment = Alignment.Center
+    ) {
+        IconButton(
+            onClick = {
+                isPressed = true
+                onClick()
+                isPressed = false
+            },
+            modifier = Modifier.fillMaxSize()
+        ) {
+            Icon(
+                imageVector = Icons.Default.Add,
+                contentDescription = "Add Alarm",
+                tint = Color.White,
+                modifier = Modifier.size(32.dp)
+            )
         }
     }
 }
