@@ -108,3 +108,11 @@ class SaveSettingsUseCase @Inject constructor(
         settingsRepository.setUseIOSStyleTimePicker(enabled)
     }
 }
+
+class CompleteOnboardingUseCase @Inject constructor(
+    private val settingsRepository: SettingsRepository
+) {
+    suspend operator fun invoke() {
+        settingsRepository.setOnboardingCompleted(true)
+    }
+}
